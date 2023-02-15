@@ -1,0 +1,20 @@
+[
+  {
+    "title": "iPhone 14 Pro max",
+    "price": 299,
+    "slug": "iphone-14-pro-max",
+    "description": "New Book",
+    "category": "Books",
+    "count": "10",
+    "image": "/images/iPhone14.jpg"
+  },
+  {
+    "title": "Samsung S22 Ultra",
+    "price": 180,
+    "slug": "samsung-s22-ultra",
+    "description": "New Book",
+    "category": "Books",
+    "count": 15,
+    "image": "/images/samsung-s22.webp"
+  }
+]
