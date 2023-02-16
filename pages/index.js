@@ -5,11 +5,12 @@ import productItem from "../data/products.json";
 function Home() {
   return (
     <Layout title="Home page">
-      <h1 className="text-2xl font-semibold mb-6">Products</h1>
-      <div className="grid grid-cols-1 gap-12 md:grid-cols-3 lg:grid-cols-4">
-        {productItem.map((pItem) => (
-          <Product key={pItem.slug} item={pItem} />
-        ))}
+      <div className="rounded-2xl border-2 border-slate-200 border-dashed py-14 px-20">
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-3 lg:grid-cols-5">
+          {productItem.map((pItem) => (
+            <Product key={pItem.slug} item={pItem} />
+          ))}
+        </div>
       </div>
     </Layout>
   );
