@@ -7,16 +7,18 @@ import Link from "next/link";
 const Product = ({ item }) => {
   const { title, image, price, slug } = item;
   return (
-    <div className="mb-5 block  hover:drop-shadow-lg">
+    <div className="mb-5 block hover:drop-shadow-lg">
       <Link href={`products/${slug}`} className="relative">
-        <div className="bg-gradient-to-t from-black/50 absolute bottom-0 w-full h-1/2 rounded-xl"></div>
-        <img
+        <div className="bg-gradient-to-t from-black/30 absolute bottom-0 w-full h-1/2 rounded-xl"></div>
+        <Image
           src={image}
           className="rounded-xl"
+          width={500}
+          height={500}
           alt="product"
           title="Show details"
         />
-        <span className="absolute bottom-4 right-4 text-lg text-white">
+        <span className="absolute bottom-3 right-4 text-lg text-white">
           ${price}
         </span>
       </Link>
