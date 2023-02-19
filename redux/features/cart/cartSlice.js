@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  cart: { cartItems: [] },
+  cartItems: [],
 };
 
 const cartSlice = createSlice({
@@ -11,17 +11,17 @@ const cartSlice = createSlice({
     addItems: (state, action) => {
       const newItem = action.payload;
 
-      const existingItem = state.cart.cartItems.find(
+      const existingItem = state.cartItems.find(
         (item) => item.slug === newItem.slug
       );
 
       const cartItems = existingItem
-        ? state.cart.cartItems.map((item) =>
+        ? state.cartItems.map((item) =>
             item.title === existingItem.title ? newItem : item
           )
-        : [...state.cart.cartItems, newItem];
+        : [...state.cartItems, newItem];
 
-      return { ...state, cart: { ...state.cart, cartItems } };
+      return { ...state, cartItems };
     },
   },
 });

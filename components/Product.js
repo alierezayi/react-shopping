@@ -4,8 +4,23 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
+// Redux
+import { useDispatch, useSelector } from "react-redux";
+import { addItems } from "../redux/features/cart/cartSlice";
+
 const Product = ({ item }) => {
   const { title, image, price, slug } = item;
+
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state.cart);
+
+  const addToCartHandler = () => {
+    const existingItem = state.cartItems.find((item) => item.slug === slug);
+
+    const quantity = existingItem ? existingItem.quantity + 1 : 1;
+    dispatch(addItems({ ...item, quantity }));
+  };
+
   return (
     <div className="mb-5 block hover:drop-shadow-lg">
       <Link href={`products/${slug}`} className="relative">
@@ -29,6 +44,7 @@ const Product = ({ item }) => {
           </h2>
         </Link>
         <button
+          onClick={addToCartHandler}
           className="rounded-lg bg-slate-200 hover:bg-slate-300 mt-6 py-2 font-semibold 
           focus:ring focus:ring-blue-700 focus:ring-offset-2 transition"
         >
