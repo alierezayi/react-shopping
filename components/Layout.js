@@ -4,11 +4,16 @@ import React from "react";
 import Head from "next/head";
 import Link from "next/link";
 
+// Redux
+import { useSelector } from "react-redux";
+
 // Icon
 import { ShoppingBagIcon } from "@heroicons/react/24/outline";
 
 const Layout = ({ children, title }) => {
-  let cartCount = 0;
+  const state = useSelector((state) => state.cart);
+
+  const cartCount = state.cartItems.reduce((acc, cur) => acc + cur.quantity, 0);
   return (
     <>
       {/* head of pages */}
@@ -24,7 +29,10 @@ const Layout = ({ children, title }) => {
               Shopping
             </Link>
             <div className="flex sm:space-x-4">
-              <Link href="/login" className="p-2 text-md text-gray-400 hover:text-gray-600">
+              <Link
+                href="/login"
+                className="p-2 text-md text-gray-400 hover:text-gray-600"
+              >
                 Signup / Login
               </Link>
               <Link
