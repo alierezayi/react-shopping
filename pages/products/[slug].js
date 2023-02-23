@@ -61,8 +61,8 @@ const ProductPage = () => {
               </div>
               <button
                 disabled={product.count > 0 ? false : true}
-                className="rounded-lg bg-blue-500 hover:bg-blue-600 text-white py-2 w-full font-semibold 
-              focus:ring focus:ring-slate-300 focus:ring-offset-2 transition disabled:cursor-not-allowed
+                className="rounded-lg bg-blue-500 hover:bg-blue-600 text-white py-2 w-full 
+              focus:ring focus:ring-blue-400 focus:ring-offset-2 transition disabled:cursor-not-allowed
               disabled:bg-slate-200 mt-4"
               >
                 Add to Cart

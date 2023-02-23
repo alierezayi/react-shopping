@@ -1,10 +1,10 @@
 import Layout from "../components/layout/Layout";
-import ProductList from "../components/products/ProductList";
+import ProductGrid from "../components/products/ProductGrid"
 
 function Home() {
   return (
     <Layout title="Home page">
-      <ProductList />
+      <ProductGrid />
     </Layout>
   );
 }

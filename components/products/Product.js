@@ -13,18 +13,12 @@ const Product = ({ item }) => {
 
   const dispatch = useDispatch();
   const state = useSelector((state) => state.cart);
-
-  const addToCartHandler = () => {
-    const existingItem = state.cartItems.find((item) => item.slug === slug);
-
-    const quantity = existingItem ? existingItem.quantity + 1 : 1;
-    dispatch(addItems({ ...item, quantity }));
-  };
+  console.log(state.cartItems);
 
   return (
     <div className="mb-5 block hover:drop-shadow-lg">
       <Link href={`products/${slug}`} className="relative">
-        <div className="bg-gradient-to-t from-black/30 absolute bottom-0 w-full h-1/2 rounded-xl"></div>
+        <div className="bg-gradient-to-t from-black/40 absolute bottom-0 w-full h-1/2 rounded-xl"></div>
         <Image
           src={image}
           className="rounded-xl"
@@ -39,14 +33,14 @@ const Product = ({ item }) => {
       </Link>
       <div className="flex flex-col justify-center">
         <Link href={`products/${slug}`}>
-          <h2 className="font-bold text-base mt-2" title="Show details">
+          <h2 className="font-semibold text-base mt-2" title="Show details">
             {title}
           </h2>
         </Link>
         <button
-          onClick={addToCartHandler}
-          className="rounded-lg bg-slate-200 hover:bg-slate-300 mt-6 py-2 font-semibold 
-          focus:ring focus:ring-slate-300 focus:ring-offset-1 transition"
+          onClick={() => dispatch(addItems(item))}
+          className="rounded-lg bg-slate-200 hover:bg-slate-300 mt-6 py-2 
+          focus:ring focus:ring-blue-400 focus:ring-offset-1 transition"
         >
           Add to Cart
         </button>
