@@ -37,11 +37,41 @@ const addItemsHandler = (state, action) => {
   };
 };
 
-const removeItemsHandler = (state, action) => {};
+const removeItemsHandler = (state, action) => {
+  const newCartItems = state.cartItems.filter(
+    (item) => item.slug !== action.payload.slug
+  );
 
-const increaseHandler = (state, action) => {};
+  return {
+    ...state,
+    cartItems: [...newCartItems],
+    ...sumItems(state.cartItems),
+  };
+};
 
-const decreaseHandler = (state, action) => {};
+const increaseHandler = (state, action) => {
+  const indexItem = state.cartItems.findIndex(
+    (item) => item.slug === action.payload.slug
+  );
+  state.cartItems[indexItem].quantity++;
+
+  return {
+    ...state,
+    ...sumItems(state.cartItems),
+  };
+};
+
+const decreaseHandler = (state, action) => {
+  const indexD = state.cartItems.findIndex(
+    (item) => item.slug === action.payload.slug
+  );
+  state.cartItems[indexD].quantity--;
+
+  return {
+    ...state,
+    ...sumItems(state.cartItems),
+  };
+};
 
 const cartSlice = createSlice({
   name: "cart",
