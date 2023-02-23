@@ -1,11 +1,11 @@
 import Link from "next/link";
-
-// Icon
 import { ShoppingBagIcon } from "@heroicons/react/24/outline";
+import { useSelector } from "react-redux";
 
 const Header = () => {
-  const cartCount = 0;
-  // const cartCount = state.cartItems.reduce((acc, cur) => acc + cur.quantity, 0);
+  const state = useSelector((state) => state.cart);
+
+  const cartCount = state.cartItems.length;
   return (
     <header className="sticky top-0 z-50 w-full backdrop-blur border-b bg-white/70 border-b-slate-100">
       <nav className="flex h-16 px-4 sm:px-8 lg:px-16 justify-between items-center">

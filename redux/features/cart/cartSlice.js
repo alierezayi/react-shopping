@@ -7,6 +7,12 @@ const initialState = {
   checkout: false,
 };
 
+const sumItems = (items) => {
+  const cartCounter = items.reduce((total, item) => total + item.quantity, 0);
+
+  return { cartCounter };
+};
+
 const addItemsHandler = (state, action) => {
   const newItem = { ...action.payload, quantity: 1 };
 
@@ -14,18 +20,20 @@ const addItemsHandler = (state, action) => {
     (item) => item.slug === newItem.slug
   );
 
-  const cartItems = existingItem
-    ? [...state.cartItems]
-    : [...state.cartItems, newItem];
   // const cartItems = existingItem
-  //   ? state.cartItems.map((item) =>
-  //       item.title === existingItem.title ? newItem : item
-  //     )
+  //   ? [...state.cartItems]
   //   : [...state.cartItems, newItem];
+
+  const cartItems = existingItem
+    ? state.cartItems.map((item) =>
+        item.title === existingItem.title ? newItem : item
+      )
+    : [...state.cartItems, newItem];
 
   return {
     ...state,
     cartItems,
+    ...sumItems(state.cartItems),
   };
 };
 

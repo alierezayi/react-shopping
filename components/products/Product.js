@@ -18,7 +18,7 @@ const Product = ({ item }) => {
   return (
     <div className="mb-5 block hover:drop-shadow-lg">
       <Link href={`products/${slug}`} className="relative">
-        <div className="bg-gradient-to-t from-black/40 absolute bottom-0 w-full h-1/2 rounded-xl"></div>
+        <div className="bg-gradient-to-t from-black/40 absolute bottom-0 w-full h-1/2 rounded-b-xl"></div>
         <Image
           src={image}
           className="rounded-xl"
