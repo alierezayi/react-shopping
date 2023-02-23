@@ -6,7 +6,7 @@ import Link from "next/link";
 
 // Redux
 import { useDispatch, useSelector } from "react-redux";
-import { addItems } from "../../redux/features/cart/cartSlice";
+import { addItem } from "../../redux/features/cart/cartSlice";
 
 const Product = ({ item }) => {
   const { title, image, price, slug } = item;
@@ -38,7 +38,7 @@ const Product = ({ item }) => {
           </h2>
         </Link>
         <button
-          onClick={() => dispatch(addItems(item))}
+          onClick={() => dispatch(addItem(item))}
           className="rounded-lg bg-slate-200 hover:bg-slate-300 mt-6 py-2 
           focus:ring focus:ring-blue-400 focus:ring-offset-1 transition"
         >

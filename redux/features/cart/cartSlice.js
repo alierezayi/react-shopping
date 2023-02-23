@@ -37,14 +37,23 @@ const addItemsHandler = (state, action) => {
   };
 };
 
+const removeItemsHandler = (state, action) => {};
+
+const increaseHandler = (state, action) => {};
+
+const decreaseHandler = (state, action) => {};
+
 const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    addItems: addItemsHandler,
+    addItem: addItemsHandler,
+    removeItem: removeItemsHandler,
+    increase: increaseHandler,
+    decrease: decreaseHandler,
   },
 });
 
-export const { addItems } = cartSlice.actions;
+export const { addItem } = cartSlice.actions;
 
 export default cartSlice.reducer;
