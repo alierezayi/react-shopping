@@ -1,13 +1,35 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { useDispatch, useSelector } from "react-redux";
 import Layout from "../../components/layout/Layout";
 import productItems from "../../data/products.json";
+import {
+  addItem,
+  decrease,
+  increase,
+  removeItem,
+} from "../../redux/features/cart/cartSlice";
+import { PlusIcon, MinusIcon, TrashIcon } from "@heroicons/react/24/outline";
 
 const ProductPage = () => {
   const { query } = useRouter();
   const { slug } = query;
-
   const product = productItems.find((item) => item.slug === slug);
+
+  const state = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
+
+  const isInCart = state.cartItems.find((item) => item.slug === product.slug);
+  const quantityChangeHandler = (type) => {
+    if (type === "increase") {
+      dispatch(increase(product));
+    } else if (type === "decrease") {
+      dispatch(decrease(product));
+    } else {
+      dispatch(removeItem(product));
+    }
+  };
+  console.log(state);
 
   return (
     <div>
@@ -59,14 +81,44 @@ const ProductPage = () => {
                   </div>
                 ) : null}
               </div>
-              <button
-                disabled={product.count > 0 ? false : true}
-                className="rounded-lg bg-blue-500 hover:bg-blue-600 text-white py-2 w-full 
-              focus:ring focus:ring-blue-400 focus:ring-offset-2 transition disabled:cursor-not-allowed
+              {!isInCart ? (
+                <button
+                  onClick={() => dispatch(addItem(product))}
+                  disabled={!product.count}
+                  className="rounded-lg bg-slate-200 hover:bg-slate-300 py-2 w-full 
+              focus:ring focus:ring-blue-400 focus:ring-offset-1 transition duration-500 disabled:cursor-not-allowed
               disabled:bg-slate-200 mt-4"
-              >
-                Add to Cart
-              </button>
+                >
+                  Add to Cart
+                </button>
+              ) : (
+                <div className="w-full flex justify-between mt-4">
+                  {isInCart.quantity === 1 ? (
+                    <button
+                      onClick={() => quantityChangeHandler("remove")}
+                      className="border border-rose-400 py-2 px-6 rounded-lg flex justify-center items-center hover:bg-rose-50 transition-colors duration-200 active:bg-rose-100"
+                    >
+                      <TrashIcon className="w-6 h-6 text-rose-400" />
+                    </button>
+                  ) : (
+                    <button
+                      onClick={() => quantityChangeHandler("decrease")}
+                      className="border border-rose-400 py-2 px-6 rounded-lg flex justify-center items-center hover:bg-rose-50 transition-colors duration-200 active:bg-rose-100"
+                    >
+                      <MinusIcon className="w-6 h-6 text-rose-400" />
+                    </button>
+                  )}
+                  <span className="border py-1 px-4 rounded-xl text-lg font-semibold">
+                    {isInCart.quantity}
+                  </span>
+                  <button
+                    onClick={() => quantityChangeHandler("increase")}
+                    className="bg-blue-500 py-2 px-6 rounded-lg flex justify-center items-center hover:bg-blue-600 transition-colors duration-200 active:bg-blue-700"
+                  >
+                    <PlusIcon className="w-6 h-6 text-white" />
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         )}

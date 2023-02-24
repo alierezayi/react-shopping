@@ -8,9 +8,12 @@ const initialState = {
 };
 
 const sumItems = (items) => {
-  const cartCounter = items.reduce((total, item) => total + item.quantity, 0);
+  const cartCounter = items.reduce(
+    (total, product) => total + product.quantity,
+    0
+  );
 
-  return { cartCounter };
+  return cartCounter;
 };
 
 const addItemsHandler = (state, action) => {
@@ -30,11 +33,9 @@ const addItemsHandler = (state, action) => {
       )
     : [...state.cartItems, newItem];
 
-  return {
-    ...state,
-    cartItems,
-    ...sumItems(state.cartItems),
-  };
+  state.cartItems = cartItems;
+
+  state.cartCounter = sumItems(state.cartItems);
 };
 
 const removeItemsHandler = (state, action) => {
@@ -42,23 +43,18 @@ const removeItemsHandler = (state, action) => {
     (item) => item.slug !== action.payload.slug
   );
 
-  return {
-    ...state,
-    cartItems: [...newCartItems],
-    ...sumItems(state.cartItems),
-  };
+  state.cartItems = [...newCartItems];
+
+  state.cartCounter = sumItems(state.cartItems);
 };
 
 const increaseHandler = (state, action) => {
-  const indexItem = state.cartItems.findIndex(
+  const indexI = state.cartItems.findIndex(
     (item) => item.slug === action.payload.slug
   );
-  state.cartItems[indexItem].quantity++;
+  state.cartItems[indexI].quantity++;
 
-  return {
-    ...state,
-    ...sumItems(state.cartItems),
-  };
+  state.cartCounter = sumItems(state.cartItems);
 };
 
 const decreaseHandler = (state, action) => {
@@ -67,10 +63,7 @@ const decreaseHandler = (state, action) => {
   );
   state.cartItems[indexD].quantity--;
 
-  return {
-    ...state,
-    ...sumItems(state.cartItems),
-  };
+  state.cartCounter = sumItems(state.cartItems);
 };
 
 const cartSlice = createSlice({
@@ -84,6 +77,6 @@ const cartSlice = createSlice({
   },
 });
 
-export const { addItem } = cartSlice.actions;
+export const { addItem, removeItem, increase, decrease } = cartSlice.actions;
 
 export default cartSlice.reducer;

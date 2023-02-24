@@ -1,19 +1,24 @@
 import React from "react";
-
-// Next
 import Image from "next/image";
 import Link from "next/link";
-
-// Redux
 import { useDispatch, useSelector } from "react-redux";
-import { addItem } from "../../redux/features/cart/cartSlice";
+import {
+  addItem,
+  removeItem,
+  increase,
+  decrease,
+} from "../../redux/features/cart/cartSlice";
+import { CheckBadgeIcon, TrashIcon } from "@heroicons/react/24/outline";
 
-const Product = ({ item }) => {
-  const { title, image, price, slug } = item;
+const Product = ({ itemData }) => {
+  const { title, image, price, slug } = itemData;
 
   const dispatch = useDispatch();
   const state = useSelector((state) => state.cart);
-  console.log(state.cartItems);
+  console.log(state);
+  const existingItem = state.cartItems.find(
+    (item) => item.slug === itemData.slug
+  );
 
   return (
     <div className="mb-5 block hover:drop-shadow-lg">
@@ -37,13 +42,28 @@ const Product = ({ item }) => {
             {title}
           </h2>
         </Link>
-        <button
-          onClick={() => dispatch(addItem(item))}
-          className="rounded-lg bg-slate-200 hover:bg-slate-300 mt-6 py-2 
-          focus:ring focus:ring-blue-400 focus:ring-offset-1 transition"
-        >
-          Add to Cart
-        </button>
+        {!existingItem ? (
+          <button
+            onClick={() => dispatch(addItem(itemData))}
+            className="rounded-lg bg-slate-200 hover:bg-slate-300 mt-6 py-2 
+          focus:ring focus:ring-blue-400 focus:ring-offset-1 transition duration-500"
+          >
+            Add to Cart
+          </button>
+        ) : (
+          <div className="flex justify-between items-center mt-6">
+            <div className={`flex justify-start items-center space-x-1`}>
+              <CheckBadgeIcon className="text-blue-500 w-6 h-6" />
+              <span className="text-gray-600">added to shop cart</span>
+            </div>
+            <button
+              onClick={() => dispatch(removeItem(itemData))}
+              className="rounded-lg border border-rose-400 hover:bg-rose-50 active:bg-rose-100 text-rose-400 py-2 px-4 transition duration-200"
+            >
+              <TrashIcon className="w-6 h-6 text-rose-400" />
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
