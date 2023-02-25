@@ -1,6 +1,5 @@
 import { useSelector } from "react-redux";
 import Layout from "../../components/layout/Layout";
-
 const CartPage = () => {
   const state = useSelector((state) => state.cart);
   const { cartItems } = state;
@@ -38,4 +37,4 @@ const CartPage = () => {
   );
 };
 
-export default CartPage;
+export default CartPage

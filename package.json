@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.12",
     "@heroicons/react": "^2.0.15",
     "@reduxjs/toolkit": "^1.9.2",
     "eslint": "8.29.0",
