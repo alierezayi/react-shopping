@@ -21,9 +21,9 @@ const Header = () => {
           </Link>
           <Link
             href="/cart"
-            className="flex p-2 space-x-1 text-gray-400 hover:text-gray-600"
+            className="flex p-2 space-x-1"
           >
-            <ShoppingBagIcon className="h-6 w-6" />
+            <ShoppingBagIcon className="h-6 w-6 text-gray-400 hover:text-gray-600" />
             <span>{cartCount}</span>
           </Link>
         </div>
