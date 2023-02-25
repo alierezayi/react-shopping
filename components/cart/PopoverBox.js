@@ -8,8 +8,6 @@ import { useSelector } from "react-redux";
 const PopoverBox = () => {
   const state = useSelector((state) => state.cart);
   const { cartItems } = state;
-  ;
-
   return (
     <Popover className="relative">
       {({ open }) => (
@@ -36,7 +34,7 @@ const PopoverBox = () => {
                     <Link
                       key={item.slug}
                       href={`/products/${item.slug}`}
-                      className="-m-3 flex items-center rounded-lg p-2 transition duration-150 ease-in-out hover:bg-gray-50 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50"
+                      className="-m-3 flex items-center rounded-lg p-2 transition duration-150 ease-in-out hover:bg-gray-50"
                     >
                       <div className="flex h-10 w-10 shrink-0 items-center justify-center text-white sm:h-12 sm:w-12">
                         <Image
@@ -57,19 +55,17 @@ const PopoverBox = () => {
                   ))}
                 </div>
                 <div className="bg-gray-50 p-4">
-                  <a
-                    href="##"
-                    className="flow-root rounded-md px-2 py-2 transition duration-150 ease-in-out hover:bg-gray-100 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50"
-                  >
-                    <span className="flex items-center">
-                      <span className="text-sm font-medium text-gray-900">
-                        Documentation
-                      </span>
-                    </span>
-                    <span className="block text-sm text-gray-500">
-                      Start integrating products and tools
-                    </span>
-                  </a>
+                  <div className=" w-4/5 mx-auto flex flex-col space-y-2">
+                    <button className="bg-indigo-500 text-white py-2 rounded-lg text-base hover:bg-indigo-600 transition duration-200 ease-in-out">
+                      Checkout
+                    </button>
+                    <Link
+                      href="/cart"
+                      className="w-full text-center py-2 text-indigo-500 text-base hover:text-indigo-600 transition duration-200"
+                    >
+                      View Shopping Cart
+                    </Link>
+                  </div>
                 </div>
               </div>
             </Popover.Panel>
