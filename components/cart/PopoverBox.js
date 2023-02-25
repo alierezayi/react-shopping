@@ -29,9 +29,9 @@ const PopoverBox = () => {
             leaveFrom="opacity-100 translate-y-0"
             leaveTo="opacity-0 translate-y-1"
           >
-            <Popover.Panel className="absolute right-1/4 z-10 mt-2 w-screen max-w-sm px-4 sm:px-0 lg:max-w-3xl">
+            <Popover.Panel className="absolute right-1/4 z-10 mt-2 w-screen max-w-sm px-4 sm:px-0">
               <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
-                <div className="relative grid gap-8 bg-white p-7 lg:grid-cols-2">
+                <div className="relative grid gap-8 bg-white p-7">
                   {cartItems.map((item) => (
                     <Link
                       key={item.slug}
@@ -41,10 +41,10 @@ const PopoverBox = () => {
                       <div className="flex h-10 w-10 shrink-0 items-center justify-center text-white sm:h-12 sm:w-12">
                         <Image
                           src={item.image}
-                          width={75}
-                          height={75}
+                          width={100}
+                          height={100}
                           alt="product"
-                          className="rounded-md border"
+                          className="rounded-md border border-slate-100"
                         />
                       </div>
                       <div className="ml-4">
