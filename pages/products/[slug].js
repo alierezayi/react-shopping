@@ -3,12 +3,7 @@ import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import Layout from "../../components/layout/Layout";
 import productItems from "../../data/products.json";
-import {
-  addItem,
-  decrease,
-  increase,
-  removeItem,
-} from "../../redux/features/cart/cartSlice";
+import { addItem, decrease, increase, removeItem } from "../../redux/features/cart/cartSlice";
 import { PlusIcon, MinusIcon, TrashIcon } from "@heroicons/react/24/outline";
 
 const ProductPage = () => {
@@ -34,9 +29,6 @@ const ProductPage = () => {
       case "increase":
         if (product.count > isInCart.quantity) {
           dispatch(increase(product));
-        }
-        if (product.count <= isInCart.quantity) {
-          setOutOfCount(true);
         }
         break;
 

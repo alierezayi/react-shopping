@@ -2,12 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  addItem,
-  removeItem,
-  increase,
-  decrease,
-} from "../../redux/features/cart/cartSlice";
+import { addItem, removeItem } from "../../redux/features/cart/cartSlice";
 import { CheckBadgeIcon, TrashIcon } from "@heroicons/react/24/outline";
 
 const Product = ({ itemData }) => {
