@@ -20,13 +20,32 @@ const ProductPage = () => {
   const dispatch = useDispatch();
 
   const isInCart = state.cartItems.find((item) => item.slug === product.slug);
-  const quantityChangeHandler = (type) => {
-    if (type === "increase") {
-      dispatch(increase(product));
-    } else if (type === "decrease") {
-      dispatch(decrease(product));
-    } else {
-      dispatch(removeItem(product));
+
+  const cartOperation = (type) => {
+    switch (type) {
+      case "add":
+        dispatch(addItem(product));
+        break;
+
+      case "remove":
+        dispatch(removeItem(product));
+        break;
+
+      case "increase":
+        if (product.count > isInCart.quantity) {
+          dispatch(increase(product));
+        }
+        if (product.count <= isInCart.quantity) {
+          setOutOfCount(true);
+        }
+        break;
+
+      case "decrease":
+        dispatch(decrease(product));
+        break;
+
+      default:
+        break;
     }
   };
   console.log(state);
@@ -83,7 +102,7 @@ const ProductPage = () => {
               </div>
               {!isInCart ? (
                 <button
-                  onClick={() => dispatch(addItem(product))}
+                  onClick={() => cartOperation("add")}
                   disabled={!product.count}
                   className="rounded-lg bg-slate-200 hover:bg-slate-300 py-2 w-full 
               focus:ring focus:ring-blue-400 focus:ring-offset-1 transition duration-500 disabled:cursor-not-allowed
@@ -95,14 +114,14 @@ const ProductPage = () => {
                 <div className="w-full flex justify-between mt-4">
                   {isInCart.quantity === 1 ? (
                     <button
-                      onClick={() => quantityChangeHandler("remove")}
+                      onClick={() => cartOperation("remove")}
                       className="border border-rose-400 py-2 px-6 rounded-lg flex justify-center items-center hover:bg-rose-50 transition-colors duration-200 active:bg-rose-100"
                     >
                       <TrashIcon className="w-6 h-6 text-rose-400" />
                     </button>
                   ) : (
                     <button
-                      onClick={() => quantityChangeHandler("decrease")}
+                      onClick={() => cartOperation("decrease")}
                       className="border border-rose-400 py-2 px-6 rounded-lg flex justify-center items-center hover:bg-rose-50 transition-colors duration-200 active:bg-rose-100"
                     >
                       <MinusIcon className="w-6 h-6 text-rose-400" />
@@ -112,8 +131,10 @@ const ProductPage = () => {
                     {isInCart.quantity}
                   </span>
                   <button
-                    onClick={() => quantityChangeHandler("increase")}
-                    className="bg-blue-500 py-2 px-6 rounded-lg flex justify-center items-center hover:bg-blue-600 transition-colors duration-200 active:bg-blue-700"
+                    onClick={() => cartOperation("increase")}
+                    disabled={product.count <= isInCart.quantity}
+                    className="bg-blue-500 py-2 px-6 rounded-lg flex justify-center items-center hover:bg-blue-600 transition-colors duration-200 active:bg-blue-700
+                     disabled:bg-blue-200 disabled:cursor-not-allowed"
                   >
                     <PlusIcon className="w-6 h-6 text-white" />
                   </button>
