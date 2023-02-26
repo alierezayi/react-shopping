@@ -9,7 +9,7 @@ import {
   increase,
   removeItem,
 } from "../../redux/features/cart/cartSlice";
-import { PlusIcon, MinusIcon, TrashIcon } from "@heroicons/react/24/outline";
+import { PlusIcon, MinusIcon } from "@heroicons/react/24/outline";
 
 const ProductPage = () => {
   const { query } = useRouter();
@@ -38,7 +38,9 @@ const ProductPage = () => {
         break;
 
       case "decrease":
-        dispatch(decrease(product));
+        if (isInCart.quantity > 1) {
+          dispatch(decrease(product));
+        }
         break;
 
       default:
@@ -55,8 +57,8 @@ const ProductPage = () => {
             <h1 className="m-auto text-3xl font-semibold">Product not found</h1>
           </div>
         ) : (
-          <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-3 rounded-xl border border-double border-slate-200 mx-2 p-10">
-            <div className="flex justify-center items-start">
+          <div className="grid xl:grid-cols-3 lg:grid-cols-2 gap-3 rounded-xl mx-2 md:p-10">
+            <div className="flex justify-center items-start mb-16">
               <Image
                 className="rounded-xl"
                 src={product.image}
@@ -65,23 +67,23 @@ const ProductPage = () => {
                 alt="details"
               />
             </div>
-            <div className="lg:col-span-2 px-5">
+            <div className="xl:col-span-2 px-5">
               <div>
-                <h2 className="text-2xl">{product.title}</h2>
+                <h2 className="text-3xl mb-2">{product.title}</h2>
                 <p className="text-gray-400">{product.category}</p>
-                <div className="my-8 py-3 px-8 rounded-xl border border-dashed">
+                <div className="mt-8 lg:mt-16 py-3 px-8 rounded-xl border border-dashed">
                   <p>{product.description}</p>
                 </div>
               </div>
             </div>
-            <div className="p-5 h-full flex flex-col justify-between md:mt-6">
+            <div className="p-5 h-full flex flex-col justify-between mt-6">
               <div className="space-y-3">
                 <div className="mb-2 spac flex justify-between">
-                  <span>Price:</span>
+                  <span className="font-medium">Price</span>
                   <span>$ {product.price}</span>
                 </div>
                 <div className="mb-2 flex justify-between">
-                  <span>Status:</span>
+                  <span className="font-medium">Status</span>
                   <span
                     className={`${
                       product.count > 0 ? "text-blue-500" : "text-red-500"
@@ -92,7 +94,7 @@ const ProductPage = () => {
                 </div>
                 {product.count ? (
                   <div className="mb-2 flex justify-between">
-                    <span>Count:</span>
+                    <span className="font-medium">Count</span>
                     <span>{product.count}</span>
                   </div>
                 ) : null}
@@ -109,21 +111,12 @@ const ProductPage = () => {
                 </button>
               ) : (
                 <div className="w-full flex justify-between mt-10 md:mt-6">
-                  {isInCart.quantity === 1 ? (
-                    <button
-                      onClick={() => cartOperation("remove")}
-                      className="border border-slate-300 py-2 px-6 rounded-lg flex justify-center items-center hover:bg-slate-50 transition-colors duration-200 active:bg-slate-100"
-                    >
-                      <TrashIcon className="w-6 h-6 text-rose-400" />
-                    </button>
-                  ) : (
-                    <button
-                      onClick={() => cartOperation("decrease")}
-                      className="border border-slate-300 py-2 px-6 rounded-lg flex justify-center items-center hover:bg-slate-50 transition-colors duration-200 active:bg-slate-100"
-                    >
-                      <MinusIcon className="w-6 h-6 text-slate-400 font-semibold" />
-                    </button>
-                  )}
+                  <button
+                    onClick={() => cartOperation("decrease")}
+                    className="border border-slate-300 py-2 px-6 rounded-lg flex justify-center items-center hover:bg-slate-50 transition-colors duration-200 active:bg-slate-100"
+                  >
+                    <MinusIcon className="w-6 h-6 text-slate-400 font-semibold" />
+                  </button>
                   <span className="py-1 px-4 rounded-xl text-xl font-semibold">
                     {isInCart.quantity}
                   </span>

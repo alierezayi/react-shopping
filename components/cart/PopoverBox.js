@@ -29,32 +29,39 @@ const PopoverBox = () => {
           >
             <Popover.Panel className="absolute right-1/4 z-10 mt-2 w-screen max-w-sm px-4 sm:px-0">
               <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
-                <div className="relative grid gap-8 bg-white p-7">
-                  {cartItems.map((item) => (
-                    <Link
-                      key={item.slug}
-                      href={`/products/${item.slug}`}
-                      className="-m-3 flex items-center rounded-lg p-2 transition duration-150 ease-in-out hover:bg-gray-50"
-                    >
-                      <div className="flex h-10 w-10 shrink-0 items-center justify-center text-white sm:h-12 sm:w-12">
-                        <Image
-                          src={item.image}
-                          width={100}
-                          height={100}
-                          alt="product"
-                          className="rounded-md border border-slate-100"
-                        />
-                      </div>
-                      <div className="ml-4">
-                        <p className="text-sm font-medium text-gray-900">
-                          {item.title}
-                        </p>
-                        <p className="text-sm text-gray-500">{item.category}</p>
-                      </div>
-                    </Link>
-                  ))}
-                </div>
-                <div className="bg-gray-50 p-4">
+                {!cartItems.length ? (
+                  <p className="w-full text-center py-8 text-lg text-gray-600">Cart is empty.</p>
+                ) : (
+                  <div className="relative grid gap-8 bg-white p-7">
+                    {cartItems.map((item) => (
+                      <Link
+                        key={item.slug}
+                        href={`/products/${item.slug}`}
+                        className="-m-3 flex items-center rounded-lg p-2 transition duration-150 ease-in-out hover:bg-gray-50"
+                      >
+                        <div className="flex h-10 w-10 shrink-0 items-center justify-center text-white sm:h-12 sm:w-12">
+                          <Image
+                            src={item.image}
+                            width={100}
+                            height={100}
+                            alt="product"
+                            className="rounded-md border border-slate-100"
+                          />
+                        </div>
+                        <div className="ml-4">
+                          <p className="text-sm font-medium text-gray-900">
+                            {item.title}
+                          </p>
+                          <p className="text-sm text-gray-500">
+                            {item.category}
+                          </p>
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                )}
+                {cartItems.length ?
+                  <div className="bg-gray-50 p-4">
                   <div className=" w-3/4 mx-auto flex flex-col space-y-2">
                     <button className="bg-indigo-500 text-white py-2 rounded-lg text-base hover:bg-indigo-600 transition duration-200">
                       Checkout
@@ -67,7 +74,7 @@ const PopoverBox = () => {
                       <ChevronRightIcon className="w-6 h-6" />
                     </Link>
                   </div>
-                </div>
+                </div> : null}
               </div>
             </Popover.Panel>
           </Transition>
