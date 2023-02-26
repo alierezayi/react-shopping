@@ -3,7 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem, removeItem } from "../../redux/features/cart/cartSlice";
-import { CheckBadgeIcon, TrashIcon } from "@heroicons/react/24/outline";
+import { CheckIcon, TrashIcon } from "@heroicons/react/24/outline";
+import { Transition } from "@headlessui/react";
 
 const Product = ({ itemData }) => {
   const { title, image, price, slug } = itemData;
@@ -16,9 +17,10 @@ const Product = ({ itemData }) => {
   );
 
   return (
-    <div className="mb-5 block hover:drop-shadow-lg">
-      <Link href={`products/${slug}`} className="relative">
-        <div className="bg-gradient-to-t from-black/40 absolute bottom-0 w-full h-1/2 rounded-b-xl"></div>
+    <div className="mb-5 block">
+      <Link href={`products/${slug}`} className="relative hover:drop-shadow-lg">
+        <div className="bg-gradient-to-t from-black/40 absolute bottom-0 w-full h-1/2 rounded-b-lg"></div>
+
         <Image
           src={image}
           className="rounded-xl"
@@ -27,6 +29,7 @@ const Product = ({ itemData }) => {
           alt="product"
           title="Show details"
         />
+
         <span className="absolute bottom-3 right-4 text-lg text-white">
           ${price}
         </span>
@@ -37,27 +40,26 @@ const Product = ({ itemData }) => {
             {title}
           </h2>
         </Link>
+
         {!existingItem ? (
           <button
             onClick={() => dispatch(addItem(itemData))}
-            className="rounded-lg bg-slate-200 hover:bg-slate-300 mt-6 py-2 
-          focus:ring focus:ring-blue-400 focus:ring-offset-1 transition duration-500"
+            className="rounded-lg bg-slate-200 hover:bg-slate-300 mt-6 py-2 transition duration-200"
           >
             Add to Cart
           </button>
         ) : (
-          <div className="flex justify-between items-center mt-6">
-            <div className={`flex justify-start items-center space-x-1`}>
-              <CheckBadgeIcon className="text-blue-500 w-6 h-6" />
-              <span className="text-gray-600">added to shop cart</span>
+          <button
+            onClick={() => dispatch(removeItem(itemData))}
+            className="group rounded-lg bg-slate-50 border border-slate-300 border-dashed hover:bg-slate-100 mt-6 py-2 
+            transition duration-200 focus:ring focus:ring-slate-400 focus:ring-offset-1"
+          >
+            <div className="md:flex justify-center space-x-1 hidden group-hover:md:hidden transition-opacity duration-1000">
+              <CheckIcon className="text-indigo-500 w-5 h-5" />
+              <span className="text-indigo-500">Added to cart</span>
             </div>
-            <button
-              onClick={() => dispatch(removeItem(itemData))}
-              className="rounded-lg border border-rose-400 hover:bg-rose-50 active:bg-rose-100 text-rose-400 py-2 px-4 transition duration-200"
-            >
-              <TrashIcon className="w-6 h-6 text-rose-400" />
-            </button>
-          </div>
+            <TrashIcon className="w-6 h-6 text-rose-500 inline md:hidden group-hover:md:inline transition-opacity duration-1000" />
+          </button>
         )}
       </div>
     </div>

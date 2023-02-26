@@ -3,7 +3,12 @@ import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import Layout from "../../components/layout/Layout";
 import productItems from "../../data/products.json";
-import { addItem, decrease, increase, removeItem } from "../../redux/features/cart/cartSlice";
+import {
+  addItem,
+  decrease,
+  increase,
+  removeItem,
+} from "../../redux/features/cart/cartSlice";
 import { PlusIcon, MinusIcon, TrashIcon } from "@heroicons/react/24/outline";
 
 const ProductPage = () => {
@@ -55,8 +60,8 @@ const ProductPage = () => {
               <Image
                 className="rounded-xl"
                 src={product.image}
-                width={340}
-                height={340}
+                width={300}
+                height={300}
                 alt="details"
               />
             </div>
@@ -69,9 +74,9 @@ const ProductPage = () => {
                 </div>
               </div>
             </div>
-            <div className="p-5 h-full flex flex-col justify-between max-h-[400px] md:mt-6">
-              <div>
-                <div className="mb-2 flex justify-between">
+            <div className="p-5 h-full flex flex-col justify-between md:mt-6">
+              <div className="space-y-3">
+                <div className="mb-2 spac flex justify-between">
                   <span>Price:</span>
                   <span>$ {product.price}</span>
                 </div>
@@ -82,7 +87,7 @@ const ProductPage = () => {
                       product.count > 0 ? "text-blue-500" : "text-red-500"
                     }`}
                   >
-                    {product.count > 0 ? `Available` : "Unavailable"}
+                    {product.count > 0 ? "Available" : "Unavailable"}
                   </span>
                 </div>
                 {product.count ? (
@@ -98,37 +103,37 @@ const ProductPage = () => {
                   disabled={!product.count}
                   className="rounded-lg bg-slate-200 hover:bg-slate-300 py-2 w-full 
               focus:ring focus:ring-blue-400 focus:ring-offset-1 transition duration-500 disabled:cursor-not-allowed
-              disabled:bg-slate-200 mt-4"
+              disabled:bg-slate-200 mt-10 md:mt-6"
                 >
                   Add to Cart
                 </button>
               ) : (
-                <div className="w-full flex justify-between mt-4">
+                <div className="w-full flex justify-between mt-10 md:mt-6">
                   {isInCart.quantity === 1 ? (
                     <button
                       onClick={() => cartOperation("remove")}
-                      className="border border-rose-400 py-2 px-6 rounded-lg flex justify-center items-center hover:bg-rose-50 transition-colors duration-200 active:bg-rose-100"
+                      className="border border-slate-300 py-2 px-6 rounded-lg flex justify-center items-center hover:bg-slate-50 transition-colors duration-200 active:bg-slate-100"
                     >
                       <TrashIcon className="w-6 h-6 text-rose-400" />
                     </button>
                   ) : (
                     <button
                       onClick={() => cartOperation("decrease")}
-                      className="border border-rose-400 py-2 px-6 rounded-lg flex justify-center items-center hover:bg-rose-50 transition-colors duration-200 active:bg-rose-100"
+                      className="border border-slate-300 py-2 px-6 rounded-lg flex justify-center items-center hover:bg-slate-50 transition-colors duration-200 active:bg-slate-100"
                     >
-                      <MinusIcon className="w-6 h-6 text-rose-400" />
+                      <MinusIcon className="w-6 h-6 text-slate-400 font-semibold" />
                     </button>
                   )}
-                  <span className="border py-1 px-4 rounded-xl text-lg font-semibold">
+                  <span className="py-1 px-4 rounded-xl text-xl font-semibold">
                     {isInCart.quantity}
                   </span>
                   <button
                     onClick={() => cartOperation("increase")}
                     disabled={product.count <= isInCart.quantity}
-                    className="bg-blue-500 py-2 px-6 rounded-lg flex justify-center items-center hover:bg-blue-600 transition-colors duration-200 active:bg-blue-700
-                     disabled:bg-blue-200 disabled:cursor-not-allowed"
+                    className="bg-indigo-500 py-2 px-6 rounded-lg flex justify-center items-center hover:bg-indigo-600 transition-colors duration-200 active:bg-indigo-700
+                     disabled:bg-indigo-200 disabled:cursor-not-allowed"
                   >
-                    <PlusIcon className="w-6 h-6 text-white" />
+                    <PlusIcon className="w-6 h-6 text-white font-semibold " />
                   </button>
                 </div>
               )}

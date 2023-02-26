@@ -1,5 +1,5 @@
 import { Popover, Transition } from "@headlessui/react";
-import { ShoppingBagIcon } from "@heroicons/react/24/outline";
+import { ShoppingBagIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
 import { Fragment } from "react";
@@ -55,15 +55,16 @@ const PopoverBox = () => {
                   ))}
                 </div>
                 <div className="bg-gray-50 p-4">
-                  <div className=" w-4/5 mx-auto flex flex-col space-y-2">
-                    <button className="bg-indigo-500 text-white py-2 rounded-lg text-base hover:bg-indigo-600 transition duration-200 ease-in-out">
+                  <div className=" w-3/4 mx-auto flex flex-col space-y-2">
+                    <button className="bg-indigo-500 text-white py-2 rounded-lg text-base hover:bg-indigo-600 transition duration-200">
                       Checkout
                     </button>
                     <Link
                       href="/cart"
-                      className="w-full text-center py-2 text-indigo-500 text-base hover:text-indigo-600 transition duration-200"
+                      className="flex justify-center space-x-2 w-full text-center py-1 text-indigo-600 text-base hover:text-indigo-500 transition duration-200"
                     >
-                      View Shopping Cart
+                      <span>View Shopping Cart</span>
+                      <ChevronRightIcon className="w-6 h-6" />
                     </Link>
                   </div>
                 </div>
