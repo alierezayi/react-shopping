@@ -1,4 +1,4 @@
-import Product from "./Product";
+import Product from "./ProductItem";
 import productItem from "../../data/products.json";
 
 const ProductGrid = () => {

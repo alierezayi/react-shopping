@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Fragment } from "react";
 import { useSelector } from "react-redux";
+import emptyCart from "../../public/images/empty_cart.webp";
 
 const PopoverBox = () => {
   const state = useSelector((state) => state.cart);
@@ -30,7 +31,17 @@ const PopoverBox = () => {
             <Popover.Panel className="absolute right-1/4 z-10 mt-2 w-screen max-w-sm px-4 sm:px-0">
               <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
                 {!cartItems.length ? (
-                  <p className="w-full text-center py-8 text-lg text-gray-600">Cart is empty.</p>
+                  <div className="bg-white flex flex-col justify-center items-center">
+                    <Image
+                      src={emptyCart}
+                      width={150}
+                      height={150}
+                      alt="empty cart"
+                    />
+                    <p className="w-full text-center py-8 text-lg text-gray-600">
+                      Cart is empty.
+                    </p>
+                  </div>
                 ) : (
                   <div className="relative grid gap-8 bg-white p-7">
                     {cartItems.map((item) => (
@@ -39,7 +50,7 @@ const PopoverBox = () => {
                         href={`/products/${item.slug}`}
                         className="-m-3 flex items-center rounded-lg p-2 transition duration-150 ease-in-out hover:bg-gray-50"
                       >
-                        <div className="flex h-10 w-10 shrink-0 items-center justify-center text-white sm:h-12 sm:w-12">
+                        <div className="flex h-12 w-12 shrink-0 items-center justify-center text-white sm:h-14 sm:w-14">
                           <Image
                             src={item.image}
                             width={100}
@@ -60,21 +71,22 @@ const PopoverBox = () => {
                     ))}
                   </div>
                 )}
-                {cartItems.length ?
+                {cartItems.length ? (
                   <div className="bg-gray-50 p-4">
-                  <div className=" w-3/4 mx-auto flex flex-col space-y-2">
-                    <button className="bg-indigo-500 text-white py-2 rounded-lg text-base hover:bg-indigo-600 transition duration-200">
-                      Checkout
-                    </button>
-                    <Link
-                      href="/cart"
-                      className="flex justify-center space-x-2 w-full text-center py-1 text-indigo-600 text-base hover:text-indigo-500 transition duration-200"
-                    >
-                      <span>View Shopping Cart</span>
-                      <ChevronRightIcon className="w-6 h-6" />
-                    </Link>
+                    <div className=" w-2/3 mx-auto flex flex-col space-y-2">
+                      <button className="bg-indigo-500 text-white py-2 rounded-lg text-base hover:bg-indigo-600 transition duration-200">
+                        Checkout
+                      </button>
+                      <Link
+                        href="/cart"
+                        className="flex justify-center space-x-2 w-full text-center py-1 text-indigo-600 text-base hover:text-indigo-500 transition duration-200"
+                      >
+                        <span>View Shopping Cart</span>
+                        <ChevronRightIcon className="w-6 h-6" />
+                      </Link>
+                    </div>
                   </div>
-                </div> : null}
+                ) : null}
               </div>
             </Popover.Panel>
           </Transition>

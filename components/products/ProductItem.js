@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem, removeItem } from "../../redux/features/cart/cartSlice";
 import { CheckIcon, TrashIcon } from "@heroicons/react/24/outline";
-import { Transition } from "@headlessui/react";
 
 const Product = ({ itemData }) => {
   const { title, image, price, slug } = itemData;
@@ -52,11 +51,11 @@ const Product = ({ itemData }) => {
           <button
             onClick={() => dispatch(removeItem(itemData))}
             className="group rounded-lg bg-slate-50 border border-slate-300 border-dashed hover:bg-slate-100 mt-6 py-2 
-            transition duration-200 focus:ring focus:ring-slate-400 focus:ring-offset-1"
+            transition duration-200"
           >
             <div className="md:flex justify-center space-x-1 hidden group-hover:md:hidden transition-opacity duration-1000">
-              <CheckIcon className="text-indigo-500 w-5 h-5" />
-              <span className="text-indigo-500">Added to cart</span>
+              <CheckIcon className="text-indigo-400 w-5 h-5" />
+              <span className="text-indigo-400">Added to cart</span>
             </div>
             <TrashIcon className="w-6 h-6 text-rose-500 inline md:hidden group-hover:md:inline transition-opacity duration-1000" />
           </button>
