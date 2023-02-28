@@ -12,8 +12,10 @@ const sumItems = (items) => {
     (total, product) => total + product.quantity,
     0
   );
-
-  return cartCounter;
+  const totalPrice = items
+    .reduce((total, product) => total + product.price * product.quantity, 0)
+    .toFixed(2);
+  return { cartCounter, totalPrice };
 };
 
 const addItemsHandler = (state, action) => {
@@ -35,7 +37,10 @@ const addItemsHandler = (state, action) => {
 
   state.cartItems = cartItems;
 
-  state.cartCounter = sumItems(state.cartItems);
+  const total = sumItems(state.cartItems);
+
+  state.cartCounter = total.cartCounter;
+  state.totalPrice = total.totalPrice;
 };
 
 const removeItemsHandler = (state, action) => {
@@ -45,7 +50,10 @@ const removeItemsHandler = (state, action) => {
 
   state.cartItems = [...newCartItems];
 
-  state.cartCounter = sumItems(state.cartItems);
+  const total = sumItems(state.cartItems);
+
+  state.cartCounter = total.cartCounter;
+  state.totalPrice = total.totalPrice;
 };
 
 const increaseHandler = (state, action) => {
@@ -54,7 +62,10 @@ const increaseHandler = (state, action) => {
   );
   state.cartItems[indexI].quantity++;
 
-  state.cartCounter = sumItems(state.cartItems);
+  const total = sumItems(state.cartItems);
+
+  state.cartCounter = total.cartCounter;
+  state.totalPrice = total.totalPrice;
 };
 
 const decreaseHandler = (state, action) => {
@@ -63,7 +74,10 @@ const decreaseHandler = (state, action) => {
   );
   state.cartItems[indexD].quantity--;
 
-  state.cartCounter = sumItems(state.cartItems);
+  const total = sumItems(state.cartItems);
+
+  state.cartCounter = total.cartCounter;
+  state.totalPrice = total.totalPrice;
 };
 
 const cartSlice = createSlice({

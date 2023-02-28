@@ -73,7 +73,7 @@ const PopoverBox = () => {
                 )}
                 {cartItems.length ? (
                   <div className="bg-gray-50 p-4">
-                    <div className=" w-2/3 mx-auto flex flex-col space-y-2">
+                    <div className="w-4/5 mx-auto flex flex-col space-y-2">
                       <button className="bg-indigo-500 text-white py-2 rounded-lg text-base hover:bg-indigo-600 transition duration-200">
                         Checkout
                       </button>
