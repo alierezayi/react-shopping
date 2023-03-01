@@ -16,5 +16,41 @@
     "category": "Phone",
     "count": 15,
     "image": "/images/samsung-s22.webp"
+  },
+  {
+    "title": "iPhone 14 Pro max",
+    "price": 299,
+    "slug": "iphone-14-pro-maxb",
+    "description": "New Apple Phones",
+    "category": "Phone",
+    "count": 10,
+    "image": "/images/iPhone14.jpg"
+  },
+  {
+    "title": "Samsung S22 Ultra",
+    "price": 180,
+    "slug": "samsung-s22-ultrad",
+    "description": "New Sumsung",
+    "category": "Phone",
+    "count": 15,
+    "image": "/images/samsung-s22.webp"
+  },
+  {
+    "title": "iPhone 14 Pro max",
+    "price": 299,
+    "slug": "iphone-14-pro-maxv",
+    "description": "New Apple Phonesq",
+    "category": "Phone",
+    "count": 10,
+    "image": "/images/iPhone14.jpg"
+  },
+  {
+    "title": "Samsung S22 Ultra",
+    "price": 180,
+    "slug": "samsung-s22-ultral",
+    "description": "New Sumsung",
+    "category": "Phone",
+    "count": 15,
+    "image": "/images/samsung-s22.webp"
   }
 ]

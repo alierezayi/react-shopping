@@ -80,6 +80,10 @@ const decreaseHandler = (state, action) => {
   state.totalPrice = total.totalPrice;
 };
 
+const checkoutHandler = (state) => {
+  state.checkout = true;
+};
+
 const cartSlice = createSlice({
   name: "cart",
   initialState,
@@ -88,9 +92,10 @@ const cartSlice = createSlice({
     removeItem: removeItemsHandler,
     increase: increaseHandler,
     decrease: decreaseHandler,
+    checkout: checkoutHandler,
   },
 });
 
-export const { addItem, removeItem, increase, decrease } = cartSlice.actions;
+export const { addItem, removeItem, increase, decrease, checkout } = cartSlice.actions;
 
 export default cartSlice.reducer;

@@ -43,7 +43,7 @@ const PopoverBox = () => {
                     </p>
                   </div>
                 ) : (
-                  <div className="relative grid gap-8 bg-white p-7">
+                  <div className="relative grid gap-8 bg-white p-7 overflow-y-auto max-h-72">
                     {cartItems.map((item) => (
                       <Link
                         key={item.slug}
