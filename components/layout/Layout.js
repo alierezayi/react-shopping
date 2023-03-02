@@ -2,9 +2,12 @@ import Head from "next/head";
 import { useSelector } from "react-redux";
 import Header from "./Header";
 import Footer from "./Footer";
+import Cookies from "js-cookie";
 
 const Layout = ({ children, title }) => {
   const state = useSelector((state) => state.cart);
+  console.log(state);
+  console.log(Cookies.get("cart"));
 
   return (
     <>

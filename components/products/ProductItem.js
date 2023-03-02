@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,8 +10,13 @@ const Product = ({ itemData }) => {
 
   const dispatch = useDispatch();
   const state = useSelector((state) => state.cart);
-  console.log(state);
-  const existingItem = state.cartItems.find(
+
+  const [selectedItems, setSelectedItems] = useState([]);
+  useEffect(() => {
+    setSelectedItems(state.cartItems);
+  }, [state.cartItems]);
+
+  const existingItem = selectedItems.find(
     (item) => item.slug === itemData.slug
   );
 
@@ -35,7 +40,10 @@ const Product = ({ itemData }) => {
       </Link>
       <div className="flex flex-col justify-center">
         <Link href={`products/${slug}`}>
-          <h2 className="font-semibold text-sm md:text-base mt-2" title="Show details">
+          <h2
+            className="font-semibold text-sm md:text-base mt-2"
+            title="Show details"
+          >
             {title}
           </h2>
         </Link>
@@ -57,7 +65,7 @@ const Product = ({ itemData }) => {
               <CheckIcon className="text-indigo-400 w-5 h-5" />
               <span className="text-indigo-400">Added to cart</span>
             </div>
-            <TrashIcon className="w-6 h-6 text-rose-500 inline md:hidden group-hover:md:inline transition-opacity duration-1000" />
+            <TrashIcon className="w-5 h-5 text-rose-500 inline md:hidden group-hover:md:inline transition-opacity duration-1000" />
           </button>
         )}
       </div>

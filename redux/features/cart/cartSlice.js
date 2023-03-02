@@ -1,11 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
+import Cookies from "js-cookie";
 
-const initialState = {
-  cartItems: [],
-  cartCounter: 0,
-  totalPrice: 0,
-  checkout: false,
-};
+const initialState = Cookies.get("cart")
+  ? JSON.parse(Cookies.get("cart"))
+  : {
+      cartItems: [],
+      cartCounter: 0,
+      totalPrice: 0,
+      checkout: false,
+    };
 
 const sumItems = (items) => {
   const cartCounter = items.reduce(
@@ -37,23 +40,33 @@ const addItemsHandler = (state, action) => {
 
   state.cartItems = cartItems;
 
-  const total = sumItems(state.cartItems);
+  const { cartCounter, totalPrice } = sumItems(state.cartItems);
 
-  state.cartCounter = total.cartCounter;
-  state.totalPrice = total.totalPrice;
+  Cookies.set(
+    "cart",
+    JSON.stringify({ ...state, cartItems, cartCounter, totalPrice })
+  );
+
+  state.cartCounter = cartCounter;
+  state.totalPrice = totalPrice;
 };
 
 const removeItemsHandler = (state, action) => {
-  const newCartItems = state.cartItems.filter(
+  const cartItems = state.cartItems.filter(
     (item) => item.slug !== action.payload.slug
   );
 
-  state.cartItems = [...newCartItems];
+  state.cartItems = [...cartItems];
 
-  const total = sumItems(state.cartItems);
+  const { cartCounter, totalPrice } = sumItems(state.cartItems);
 
-  state.cartCounter = total.cartCounter;
-  state.totalPrice = total.totalPrice;
+  Cookies.set(
+    "cart",
+    JSON.stringify({ ...state, cartItems, cartCounter, totalPrice })
+  );
+
+  state.cartCounter = cartCounter;
+  state.totalPrice = totalPrice;
 };
 
 const increaseHandler = (state, action) => {
@@ -62,10 +75,20 @@ const increaseHandler = (state, action) => {
   );
   state.cartItems[indexI].quantity++;
 
-  const total = sumItems(state.cartItems);
+  const { cartCounter, totalPrice } = sumItems(state.cartItems);
 
-  state.cartCounter = total.cartCounter;
-  state.totalPrice = total.totalPrice;
+  Cookies.set(
+    "cart",
+    JSON.stringify({
+      ...state,
+      cartItems: [...state.cartItems],
+      cartCounter,
+      totalPrice,
+    })
+  );
+
+  state.cartCounter = cartCounter;
+  state.totalPrice = totalPrice;
 };
 
 const decreaseHandler = (state, action) => {
@@ -74,10 +97,20 @@ const decreaseHandler = (state, action) => {
   );
   state.cartItems[indexD].quantity--;
 
-  const total = sumItems(state.cartItems);
+  const { cartCounter, totalPrice } = sumItems(state.cartItems);
 
-  state.cartCounter = total.cartCounter;
-  state.totalPrice = total.totalPrice;
+  Cookies.set(
+    "cart",
+    JSON.stringify({
+      ...state,
+      cartItems: [...state.cartItems],
+      cartCounter,
+      totalPrice,
+    })
+  );
+
+  state.cartCounter = cartCounter;
+  state.totalPrice = totalPrice;
 };
 
 const checkoutHandler = (state) => {
@@ -96,6 +129,7 @@ const cartSlice = createSlice({
   },
 });
 
-export const { addItem, removeItem, increase, decrease, checkout } = cartSlice.actions;
+export const { addItem, removeItem, increase, decrease, checkout } =
+  cartSlice.actions;
 
 export default cartSlice.reducer;

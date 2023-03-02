@@ -2,13 +2,20 @@ import { Popover, Transition } from "@headlessui/react";
 import { ShoppingBagIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import emptyCart from "../../public/images/empty_cart.webp";
 
 const PopoverBox = () => {
   const state = useSelector((state) => state.cart);
   const { cartItems } = state;
+
+  const [countItems, setCountItems] = useState(0);
+
+  useEffect(() => {
+    setCountItems(cartItems.length);
+  }, [cartItems]);
+
   return (
     <Popover className="relative">
       {({ open }) => (
@@ -17,7 +24,7 @@ const PopoverBox = () => {
             <ShoppingBagIcon
               className={`h-6 w-6 text-gray-400 hover:text-gray-600 transition duration-150 ease-in-out`}
             />
-            <span>{cartItems.length}</span>
+            <span>{countItems}</span>
           </Popover.Button>
           <Transition
             as={Fragment}

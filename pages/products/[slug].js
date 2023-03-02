@@ -47,7 +47,6 @@ const ProductPage = () => {
         break;
     }
   };
-  console.log(state);
 
   return (
     <div>
