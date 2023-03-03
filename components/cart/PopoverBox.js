@@ -35,10 +35,10 @@ const PopoverBox = () => {
             leaveFrom="opacity-100 translate-y-0"
             leaveTo="opacity-0 translate-y-1"
           >
-            <Popover.Panel className="absolute right-1/4 z-10 mt-2 w-screen max-w-sm px-4 sm:px-0">
+            <Popover.Panel className="absolute -right-2 sm:right-1/4 z-10 mt-2 w-screen max-w-sm px-4 sm:px-0">
               <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
                 {!cartItems.length ? (
-                  <div className="bg-white flex flex-col justify-center items-center">
+                  <div className="bg-white flex flex-col justify-center items-center mt-3">
                     <Image
                       src={emptyCart}
                       width={150}
