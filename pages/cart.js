@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
-import CartList from "../../components/cart/CartList";
-import OrderSummary from "../../components/cart/OrderSummary";
-import Layout from "../../components/layout/Layout";
+import CartList from "../components/cart/CartList";
+import OrderSummary from "../components/cart/OrderSummary";
+import Layout from "../components/layout/Layout";
 import dynamic from "next/dynamic";
 
 const CartPage = () => {
