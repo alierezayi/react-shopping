@@ -86,7 +86,7 @@ const PopoverBox = () => {
                       </button>
                       <Link
                         href="/cart"
-                        className="flex justify-center space-x-2 w-full text-center py-1 text-indigo-600 text-base hover:text-indigo-500 transition duration-200"
+                        className="flex justify-center space-x-1 w-full text-center py-1 text-indigo-600 text-base hover:text-indigo-500 transition duration-200"
                       >
                         <span>View Shopping Cart</span>
                         <ChevronRightIcon className="w-6 h-6" />

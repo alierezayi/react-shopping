@@ -10,7 +10,7 @@ const Header = () => {
         </Link>
         <div className="flex sm:space-x-4">
           <Link
-            href="/login"
+            href="/sign-up"
             className="p-2 text-md text-gray-400 hover:text-gray-600"
           >
             Signup / Login
