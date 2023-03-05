@@ -23,7 +23,7 @@ const Product = ({ itemData }) => {
   return (
     <div className="mb-5 block">
       <Link href={`products/${slug}`} className="relative hover:drop-shadow-lg">
-        <div className="bg-gradient-to-t from-black/40 absolute bottom-0 w-full h-2/3 rounded-b-lg"></div>
+        <div className="bg-gradient-to-t from-black/50 absolute bottom-0 w-full h-4/6 rounded-b-lg"></div>
 
         <Image
           src={image}
