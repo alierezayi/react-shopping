@@ -6,7 +6,7 @@
     "description": "New Apple Phones",
     "category": "Phone",
     "count": 10,
-    "image": "/images/iPhone14.jpg"
+    "image": "/images/iPhone_14_Pro_Max_Space_Black_01.webp"
   },
   {
     "title": "Samsung S22 Ultra",
@@ -15,60 +15,60 @@
     "description": "New Sumsung",
     "category": "Phone",
     "count": 15,
-    "image": "/images/samsung-s22.webp"
+    "image": "/images/4e8091634d7729c7de37c4036efa269142287145_1652102610.jpg"
   },
   {
-    "title": "iPhone 14 Pro max",
-    "price": 299,
-    "slug": "iphone-14-pro-maxb",
+    "title": "iPhone 13 Pro max",
+    "price": 300,
+    "slug": "iphone-13-pro-max",
     "description": "New Apple Phones",
     "category": "Phone",
-    "count": 10,
-    "image": "/images/iPhone14.jpg"
+    "count": 11,
+    "image": "/images/004b2ef1e85f619e9332b096626ff33cbfa44d9f_1634457491.jpg"
   },
   {
-    "title": "Samsung S22 Ultra",
+    "title": "Galaxy Buds Pro",
+    "price": 50,
+    "slug": "galaxy-buds-pro",
+    "description": "New Headphone",
+    "category": "Headphone",
+    "count": 25,
+    "image": "/images/51c8jaXEp+S.jpg"
+  },
+  {
+    "title": "Airpod Pro",
+    "price": 75,
+    "slug": "airpod-pro",
+    "description": "New airpod",
+    "category": "Headphone",
+    "count": 27,
+    "image": "/images/006e6c450112c861b4130c897304732d91985758_1638172216.jpg"
+  },
+  {
+    "title": "Apple Watch series 7",
+    "price": 100,
+    "slug": "apple-watch-series-7",
+    "description": "New Watch",
+    "category": "Watch",
+    "count": 24,
+    "image": "/images/FKJH3.jpg"
+  },
+  {
+    "title": "Mac Book Pro",
+    "price": 400,
+    "slug": "mac-book-pro",
+    "description": "New Apple Phones",
+    "category": "Lap Top",
+    "count": 10,
+    "image": "/images/9e931e052b1fd677231ad6d1754b3df429a1c513_1660719724.jpg"
+  },
+  {
+    "title": "Samsung S21 Plus",
     "price": 180,
-    "slug": "samsung-s22-ultrad",
+    "slug": "samsung-s21-plus",
     "description": "New Sumsung",
     "category": "Phone",
     "count": 15,
-    "image": "/images/samsung-s22.webp"
-  },
-  {
-    "title": "iPhone 14 Pro max",
-    "price": 299,
-    "slug": "iphone-14-pro-maxv",
-    "description": "New Apple Phones",
-    "category": "Phone",
-    "count": 10,
-    "image": "/images/iPhone14.jpg"
-  },
-  {
-    "title": "Samsung S22 Ultra",
-    "price": 180,
-    "slug": "samsung-s22-ultral",
-    "description": "New Sumsung",
-    "category": "Phone",
-    "count": 15,
-    "image": "/images/samsung-s22.webp"
-  },
-  {
-    "title": "iPhone 14 Pro max",
-    "price": 299,
-    "slug": "iphone-14-pro-maxvf",
-    "description": "New Apple Phones",
-    "category": "Phone",
-    "count": 10,
-    "image": "/images/iPhone14.jpg"
-  },
-  {
-    "title": "Samsung S22 Ultra",
-    "price": 180,
-    "slug": "samsung-s22-ultralo",
-    "description": "New Sumsung",
-    "category": "Phone",
-    "count": 15,
-    "image": "/images/samsung-s22.webp"
+    "image": "/images/354c460b133727674a2cedba7b30865e209efe18_1631531845.jpg"
   }
 ]

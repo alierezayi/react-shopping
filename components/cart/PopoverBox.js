@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Fragment, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import emptyCart from "../../public/images/empty_cart.webp";
+import emptyCart from "../../public/images/empty-cart.png";
 
 const PopoverBox = () => {
   const state = useSelector((state) => state.cart);

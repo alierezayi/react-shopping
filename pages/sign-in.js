@@ -32,6 +32,18 @@ const SignInPage = () => {
     return errorValue && touchValue ? "ring-rose-300" : "ring-blue-400";
   };
 
+  const submitHandler = (event) => {
+    if (!Object.keys(errors).length) {
+      alert("You signed in successfully", "success");
+    } else {
+      event.preventDefault();
+      setTouched({
+        emailAdress: true,
+        password: true,
+      });
+    }
+  };
+
   return (
     <Layout title="Sign in">
       <div className="flex min-h-full items-center justify-center py-10 px-10 sm:px-6 lg:px-8">
@@ -50,7 +62,7 @@ const SignInPage = () => {
               </Link>
             </p>
           </div>
-          <form className="mt-8 space-y-4" action="#" method="POST">
+          <form className="mt-8 space-y-4" onSubmit={submitHandler}>
             <input type="hidden" name="remember" defaultValue="true" />
             <div className="grid md:grid-cols-2 md:gap-x-10 gap-y-3">
               <div className="col-span-2 space-y-1">
