@@ -6,8 +6,8 @@ import Cookies from "js-cookie";
 
 const Layout = ({ children, title }) => {
   const state = useSelector((state) => state.cart);
-  console.log(state);
-  console.log(Cookies.get("cart"));
+  // console.log(state);
+  // console.log(Cookies.get("cart"));
 
   return (
     <>

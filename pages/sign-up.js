@@ -1,7 +1,56 @@
 import Link from "next/link";
+import { useState, useEffect } from "react";
 import Layout from "../components/layout/Layout";
+import { validate } from "../components/validation/validate";
 
 const SignUpPage = () => {
+  const [data, setData] = useState({
+    firstName: "",
+    lastName: "",
+    phoneNumber: "",
+    emailAdress: "",
+    password: "",
+    confirmPassword: "",
+  });
+
+  const [errors, setErrors] = useState({});
+  const [touched, setTouched] = useState({});
+
+  useEffect(() => {
+    setErrors(validate(data, "sign-up"));
+  }, [data, touched]);
+
+  const changeHandler = (event) => {
+    setData((prevState) => ({
+      ...prevState,
+      [event.target.name]: event.target.value,
+    }));
+  };
+
+  const focusHandler = (e) => {
+    setTouched((prevState) => ({ ...prevState, [e.target.name]: true }));
+  };
+
+  const toggleClass = (errorValue, touchValue) => {
+    return errorValue && touchValue ? "ring-rose-400" : "ring-blue-400";
+  };
+
+  const submitHandler = (event) => {
+    if (!Object.keys(errors).length) {
+      alert("You signed in successfully", "success");
+    } else {
+      event.preventDefault();
+      setTouched({
+        firstName: true,
+        lastName: true,
+        phoneNumber: true,
+        emailAdress: true,
+        password: true,
+        confirmPassword: true,
+      });
+    }
+  };
+
   return (
     <Layout title="Create new Account">
       <div className="flex min-h-full items-center justify-center py-10 px-10 sm:px-6 lg:px-8">
@@ -20,32 +69,52 @@ const SignUpPage = () => {
               </Link>
             </p>
           </div>
-          <form className="mt-8 space-y-4" action="#" method="POST">
+          <form className="mt-8 space-y-4" onSubmit={submitHandler}>
             <input type="hidden" name="remember" defaultValue="true" />
             <div className="grid md:grid-cols-2 md:gap-x-10 gap-y-4">
               <div className="space-y-1 col-span-2 md:col-span-1">
                 <label htmlFor="first-name" className="text-gray-600">
-                  First Name
+                  First name
                 </label>
                 <input
                   id="first-name"
-                  name="first-name"
+                  name="firstName"
                   type="text"
-                  required
-                  className="border border-slate-300 py-1.5 px-2 w-full rounded-md outline-none focus:ring ring-blue-500 ring-offset-1"
+                  value={data.firstName}
+                  onChange={changeHandler}
+                  onFocus={focusHandler}
+                  className={`border border-slate-300 py-1.5 px-2 w-full rounded-md outline-none focus:ring ${toggleClass(
+                    errors.firstName,
+                    touched.firstName
+                  )}`}
                 />
+                {errors.firstName && touched.firstName && (
+                  <span className="text-xs text-rose-500">
+                    {errors.firstName}
+                  </span>
+                )}
               </div>
               <div className="space-y-1 col-span-2 md:col-span-1">
                 <label htmlFor="last-name" className="text-gray-600">
-                  Last Name
+                  Last name
                 </label>
                 <input
                   id="last-name"
-                  name="last-name"
+                  name="lastName"
                   type="text"
-                  required
-                  className="border border-slate-300 py-1.5 px-2 w-full rounded-md outline-none focus:ring ring-blue-500 ring-offset-1"
+                  value={data.lastName}
+                  onChange={changeHandler}
+                  onFocus={focusHandler}
+                  className={`border border-slate-300 py-1.5 px-2 w-full rounded-md outline-none focus:ring ${toggleClass(
+                    errors.lastName,
+                    touched.lastName
+                  )}`}
                 />
+                {errors.lastName && touched.lastName && (
+                  <span className="text-xs text-rose-500">
+                    {errors.lastName}
+                  </span>
+                )}
               </div>
               <div className="col-span-2 space-y-1 flex flex-col">
                 <label htmlFor="phone-number" className="text-gray-600">
@@ -53,49 +122,89 @@ const SignUpPage = () => {
                 </label>
                 <input
                   id="phone-number"
-                  name="phone-number"
-                  type="text"
+                  name="phoneNumber"
+                  type="number"
                   placeholder="+98"
-                  required
-                  className="border border-slate-300 py-1.5 px-2 rounded-md w-full md:w-3/4 outline-none focus:ring ring-blue-500 ring-offset-1"
+                  value={data.phoneNumber}
+                  onChange={changeHandler}
+                  onFocus={focusHandler}
+                  className={`border border-slate-300 py-1.5 px-2 rounded-md w-full md:w-3/4 outline-none focus:ring ${toggleClass(
+                    errors.phoneNumber,
+                    touched.phoneNumber
+                  )}`}
                 />
+                {errors.phoneNumber && touched.phoneNumber && (
+                  <span className="text-xs text-rose-500">
+                    {errors.phoneNumber}
+                  </span>
+                )}
               </div>
               <div className="col-span-2 space-y-1">
                 <label htmlFor="email-adress" className="text-gray-600">
-                  Email Adress
+                  Email adress
                 </label>
                 <input
                   id="email-adress"
-                  name="email-adress"
+                  name="emailAdress"
                   type="email"
                   placeholder="something@Example.com"
-                  required
-                  className="border border-slate-300 py-1.5 px-2 w-full rounded-md outline-none focus:ring ring-blue-500 ring-offset-1"
+                  value={data.emailAdress}
+                  onChange={changeHandler}
+                  onFocus={focusHandler}
+                  className={`border border-slate-300 py-1.5 px-2 w-full rounded-md outline-none focus:ring ${toggleClass(
+                    errors.emailAdress,
+                    touched.emailAdress
+                  )}`}
                 />
+                {errors.emailAdress && touched.emailAdress && (
+                  <span className="text-xs text-rose-500">
+                    {errors.emailAdress}
+                  </span>
+                )}
               </div>
               <div className="col-span-2 space-y-1">
                 <label htmlFor="password" className="text-gray-600">
-                  Create Password
+                  Create password
                 </label>
                 <input
                   id="password"
                   name="password"
                   type="password"
-                  required
-                  className="border border-slate-300 py-1.5 px-2 w-full rounded-md outline-none focus:ring ring-blue-500 ring-offset-1"
+                  value={data.password}
+                  onChange={changeHandler}
+                  onFocus={focusHandler}
+                  className={`border border-slate-300 py-1.5 px-2 w-full rounded-md outline-none focus:ring ${toggleClass(
+                    errors.password,
+                    touched.password
+                  )}`}
                 />
+                {errors.password && touched.password && (
+                  <span className="text-xs text-rose-500">
+                    {errors.password}
+                  </span>
+                )}
               </div>
               <div className="col-span-2 space-y-1">
                 <label htmlFor="confirm-password" className="text-gray-600">
-                  Confirm Password
+                  Confirm password
                 </label>
                 <input
                   id="confirm-password"
-                  name="confirm-password"
+                  name="confirmPassword"
                   type="password"
-                  required
-                  className="border border-slate-300 py-1.5 px-2 w-full rounded-md outline-none focus:ring ring-blue-500 ring-offset-1"
+                  value={data.confirmPassword}
+                  onChange={changeHandler}
+                  onFocus={focusHandler}
+                  className={`border border-slate-300 py-1.5 px-2 w-full rounded-md outline-none focus:ring ${toggleClass(
+                    errors.confirmPassword,
+                    touched.confirmPassword
+                  )}`}
                 />
+                {errors.confirmPassword && touched.confirmPassword && (
+                  <span className="text-xs text-rose-500">
+                    {errors.confirmPassword}
+                  </span>
+                )}
               </div>
             </div>
             <div>

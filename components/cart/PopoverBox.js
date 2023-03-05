@@ -35,14 +35,14 @@ const PopoverBox = () => {
             leaveFrom="opacity-100 translate-y-0"
             leaveTo="opacity-0 translate-y-1"
           >
-            <Popover.Panel className="absolute -right-2 sm:right-1/4 z-10 mt-2 w-screen max-w-sm px-4 sm:px-0">
+            <Popover.Panel className="absolute -right-10 sm:right-1/4 z-10 mt-2 w-screen max-w-sm px-4 sm:px-0">
               <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
                 {!cartItems.length ? (
-                  <div className="bg-white flex flex-col justify-center items-center mt-3">
+                  <div className="bg-white flex flex-col justify-center items-center pt-8">
                     <Image
                       src={emptyCart}
-                      width={150}
-                      height={150}
+                      width={100}
+                      height={100}
                       alt="empty cart"
                     />
                     <p className="w-full text-center py-8 text-lg text-gray-600">
@@ -86,7 +86,7 @@ const PopoverBox = () => {
                       </button>
                       <Link
                         href="/cart"
-                        className="flex justify-center space-x-1 w-full text-center py-1 text-indigo-600 text-base hover:text-indigo-500 transition duration-200"
+                        className="flex justify-center space-x-1 w-full text-center py-1 text-slate-400 text-base hover:text-indigo-500 transition duration-200"
                       >
                         <span>View Shopping Cart</span>
                         <ChevronRightIcon className="w-6 h-6" />

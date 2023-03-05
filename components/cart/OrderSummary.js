@@ -12,7 +12,7 @@ const OrderSummary = () => {
   const router = useRouter();
   const checkoutHandler = () => {
     dispatch(checkout());
-    router.push("/shipping");
+    router.push("sign-in?redirect=/shipping");
   };
 
   const shippingEstimate = 0;
