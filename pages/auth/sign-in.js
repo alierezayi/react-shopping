@@ -1,8 +1,8 @@
 import { LockClosedIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { validate } from "../components/validation/validate";
-import Layout from "../components/layout/Layout";
+import { validate } from "../../components/validation/validate";
+import Layout from "../../components/layout/Layout";
 
 const SignInPage = () => {
   const [data, setData] = useState({
@@ -55,7 +55,7 @@ const SignInPage = () => {
             <p className="mt-2 text-center text-sm text-gray-600">
               Do you not have an account ?{" "}
               <Link
-                href="/sign-up"
+                href="sign-up"
                 className="font-medium text-indigo-600 hover:text-indigo-500"
               >
                 Create new Account

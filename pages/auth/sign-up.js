@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import Layout from "../components/layout/Layout";
-import { validate } from "../components/validation/validate";
+import Layout from "../../components/layout/Layout";
+import { validate } from "../../components/validation/validate";
 
 const SignUpPage = () => {
   const [data, setData] = useState({
@@ -62,7 +62,7 @@ const SignUpPage = () => {
             <p className="mt-2 text-center text-sm text-gray-600">
               Do you have an account ?{" "}
               <Link
-                href="/sign-in"
+                href="sign-in"
                 className="font-medium text-indigo-600 hover:text-indigo-500"
               >
                 Sign in to your Account

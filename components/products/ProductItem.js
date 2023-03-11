@@ -51,15 +51,14 @@ const Product = ({ itemData }) => {
         {!existingItem ? (
           <button
             onClick={() => dispatch(addItem(itemData))}
-            className="rounded-lg bg-slate-200 hover:bg-slate-300 mt-3 md:mt-6 py-2 text-sm md:text-base transition duration-200"
+            className="rounded-lg h-11 bg-slate-200 hover:bg-slate-300 mt-3 md:mt-6 py-2 text-sm md:text-base transition duration-200"
           >
             Add to Cart
           </button>
         ) : (
           <button
             onClick={() => dispatch(removeItem(itemData))}
-            className="group rounded-lg bg-slate-50 border border-slate-300 border-dashed hover:bg-slate-100 mt-3 md:mt-6 py-1 md:py-2 
-            transition duration-200"
+            className="h-11 group rounded-lg bg-slate-50 border border-slate-300 border-dashed hover:bg-slate-100 mt-3 md:mt-6 py-1 md:py-2 transition duration-200"
           >
             <div className="md:flex justify-center space-x-1 hidden group-hover:md:hidden transition-opacity duration-1000">
               <CheckIcon className="text-indigo-400 w-5 h-5" />
