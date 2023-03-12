@@ -37,11 +37,10 @@ const Header = ({ items, setIsOpen }) => {
       </nav>
       <div className="h-11 flex justify-between items-center space-x-3 lg:hidden">
         <Bars3Icon
-          className="w-8 h-8 text-gray-600"
+          className="w-7 h-7 text-gray-600"
           onClick={() => setIsOpen(true)}
         />
         {/* <span className="text-gray-600">Home</span> */}
-        <MagnifyingGlassIcon className="w-6 h-6 text-gray-600" />
       </div>
     </header>
   );

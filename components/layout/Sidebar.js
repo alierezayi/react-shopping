@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { XMarkIcon } from "@heroicons/react/24/outline";
+import { MagnifyingGlassIcon, XMarkIcon } from "@heroicons/react/24/outline";
 
 const Sidebar = ({ items, isOpen, setIsOpen }) => {
   return (
@@ -8,10 +8,17 @@ const Sidebar = ({ items, isOpen, setIsOpen }) => {
         isOpen ? ` translate-x-0` : ` -translate-x-full`
       }`}
     >
-      <ul className="flex flex-col p-7">
-        <XMarkIcon className="w-6 h-6 absolute right-5 top-5 text-gray-400" onClick={()=> setIsOpen(false)} />
+      <XMarkIcon
+        className="w-6 h-6 absolute right-5 top-5 text-gray-400"
+        onClick={() => setIsOpen(false)}
+      />
+      <ul className="flex flex-col p-7 mt-9 space-y-3">
+        <li className="flex items-center space-x-2 rounded-xl bg-slate-100 p-2 shadow-sm shadow-slate-100">
+          <MagnifyingGlassIcon className="w-5 h-5 text-indigo-500" />
+          <span className="text-indigo-500">Quick search ...</span>
+        </li>
         {items.map((item, index) => (
-          <li key={index} className="p-3">
+          <li key={index} className="p-2">
             <Link href={item.href}>{item.label}</Link>
           </li>
         ))}
