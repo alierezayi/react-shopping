@@ -24,11 +24,11 @@ const Header = () => {
           <Link href="/" className="text-lg font-bold">
             <Image src={shopImage} width={45} height={45} alt="main icon" />
           </Link>
-          <ul className="hidden lg:flex items-center justify-center">
+          <ul className="hidden lg:flex items-center justify-center space-x-12">
             {navItems.map((item) => (
               <li
                 key={item.href}
-                className="font-semibold px-6 text-gray-900 hover:text-indigo-500 transition"
+                className="font-semibold text-gray-900 hover:text-indigo-500 transition"
               >
                 <Link href={item.href}>{item.label}</Link>
               </li>

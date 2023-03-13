@@ -7,8 +7,8 @@ const Sidebar = ({ items, isOpen, setIsOpen }) => {
     <>
       <BackDrop show={isOpen} setShow={setIsOpen} />
       <div
-        className={`h-screen lg:hidden z-30 fixed left-0 w-72 sm:w-80 bg-gray-50 drop-shadow-lg transition-transform duration-300 ease-in ${
-          isOpen ? ` translate-x-0` : ` -translate-x-full`
+        className={`h-screen lg:hidden z-30 fixed left-0 w-72 sm:w-80 bg-gray-50 drop-shadow-lg transition-transform duration-300 ease-out ${
+          isOpen ? ` translate-x-0 overscroll-none` : ` -translate-x-full`
         }`}
       >
         <XMarkIcon
