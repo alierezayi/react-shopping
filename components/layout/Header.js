@@ -4,7 +4,7 @@ import Image from "next/image";
 import PopoverBox from "../cart/PopoverBox";
 import shopImage from "../../public/images/shop-image.png";
 import { Bars3Icon } from "@heroicons/react/24/outline";
-import Sidebar from "./Sidebar";
+import Sidebar from "../UI/Sidebar";
 import { useState } from "react";
 
 const Header = () => {
@@ -49,7 +49,6 @@ const Header = () => {
             className="w-7 h-7 text-gray-600"
             onClick={() => setIsOpen(true)}
           />
-          {/* <span className="text-gray-600">Home</span> */}
         </div>
       </header>
       <Sidebar items={navItems} isOpen={isOpen} setIsOpen={setIsOpen} />

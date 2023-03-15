@@ -1,6 +1,3 @@
-const validPhoneNumber = new RegExp(
-  "/^[+]?[(]?[0-9]{3}[)]?[-s.]?[0-9]{3}[-s.]?[0-9]{4,6}$/im"
-);
 const validEmail = new RegExp("^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$");
 const validPassword = new RegExp("^(?=.*?[A-Za-z])(?=.*?[0-9]).{6,}$");
 
@@ -16,7 +13,7 @@ export const validate = (data, type) => {
   }
 
   if (!data.password) {
-    errors.password = "Password required";
+    errors.password = "Enter password";
   } else if (!validPassword.test(data.password)) {
     errors.password = "The password must contain numbers and letters";
   } else if (data.password.length < 8) {

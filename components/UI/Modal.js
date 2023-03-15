@@ -5,7 +5,7 @@ const Modal = ({ isOpen, setIsOpen, children }) => {
     isOpen && (
       <>
         <BackDrop show={isOpen} setShow={setIsOpen} />
-        <div className="fixed z-30 transition rounded-lg p-4 top-12 left-1/2">
+        <div className="fixed z-30 top-5 left-5 right-5 sm:top-7 sm:left-7 sm:right-7 md:top-10 md:left-[calc(50%-375px)] max-w-[750px]">
           {children}
         </div>
       </>
