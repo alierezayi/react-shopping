@@ -1,10 +1,14 @@
-import { ArrowLeftOnRectangleIcon } from "@heroicons/react/24/outline";
+import {
+  ArrowLeftOnRectangleIcon,
+  MagnifyingGlassIcon,
+} from "@heroicons/react/24/outline";
 import Link from "next/link";
 import Image from "next/image";
 import PopoverBox from "../cart/PopoverBox";
 import shopImage from "../../public/images/shop-image.png";
 import { Bars3Icon } from "@heroicons/react/24/outline";
 import Sidebar from "../UI/Sidebar";
+import SearchBar from "../UI/SearchBar";
 import { useState } from "react";
 
 const Header = () => {
@@ -21,8 +25,13 @@ const Header = () => {
     <>
       <header className="sticky top-0 z-10 w-full backdrop-blur border-b bg-white/70 px-4 border-b-slate-100/80 sm:px-8 lg:px-16 ">
         <nav className="flex h-16 lg:h-20 justify-between items-center border-b border-b-slate-100 lg:border-none">
-          <Link href="/" className="text-lg font-bold">
-            <Image src={shopImage} width={45} height={45} alt="main icon" />
+          <Bars3Icon
+            className="w-7 h-7 text-gray-600 lg:hidden"
+            onClick={() => setIsOpen(true)}
+          />
+          <Link href="/" className="flex space-x-2 text-lg font-bold">
+            <Image src={shopImage} width={30} height={30} alt="main icon" />
+            <span>BitCode Shop</span>
           </Link>
           <ul className="hidden lg:flex items-center justify-center space-x-12">
             {navItems.map((item) => (
@@ -44,13 +53,10 @@ const Header = () => {
             </Link>
           </div>
         </nav>
-        <div className="h-11 flex justify-between items-center space-x-3 lg:hidden">
-          <Bars3Icon
-            className="w-7 h-7 text-gray-600"
-            onClick={() => setIsOpen(true)}
-          />
-        </div>
       </header>
+      <div className="flex justify-center items-center space-x-3 py-3">
+        <SearchBar />
+      </div>
       <Sidebar items={navItems} isOpen={isOpen} setIsOpen={setIsOpen} />
     </>
   );

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { MagnifyingGlassIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { XMarkIcon } from "@heroicons/react/24/outline";
 import BackDrop from "./BackDrop";
 import Modal from "./Modal";
 import SearchBar from "../UI/SearchBar";
@@ -7,11 +7,6 @@ import { useState } from "react";
 
 const Sidebar = ({ items, isOpen, setIsOpen }) => {
   const [showSearchBar, setShowSearchBar] = useState(false);
-
-  const showModalSearchHandler = () => {
-    setIsOpen(false);
-    setShowSearchBar(true);
-  };
 
   return (
     <>
@@ -24,13 +19,6 @@ const Sidebar = ({ items, isOpen, setIsOpen }) => {
           className="w-6 h-6 absolute right-5 top-5 text-gray-400"
           onClick={() => setIsOpen(false)}
         />
-        <button
-          onClick={showModalSearchHandler}
-          className="flex items-center space-x-2 rounded-lg bg-slate-100 p-2 shadow-sm shadow-slate-100 mt-9 mb-3"
-        >
-          <MagnifyingGlassIcon className="w-5 h-5 text-indigo-500" />
-          <span className="text-indigo-500">Quick search ...</span>
-        </button>
         <ul className="flex flex-col space-y-3">
           {items.map((item, index) => (
             <li key={index} className="p-2">
