@@ -11,7 +11,6 @@ function Home() {
     Aos.init();
     Aos.refresh();
   }, []);
-
   return (
     <Layout title="Home page">
       <div className="relative">
