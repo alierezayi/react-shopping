@@ -10,7 +10,7 @@ const CartPage = () => {
 
   return (
     <Layout title="Cart page">
-      <div className=" mx-auto">
+      <div className="container m-auto px-1">
         <h1 className="mb-10 text-3xl font-medium">Shoppoing Cart</h1>
         {!cartItems.length ? (
           <div>

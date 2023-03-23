@@ -49,8 +49,8 @@ const ProductPage = () => {
   };
 
   return (
-    <div>
-      <Layout title={product && product.title}>
+    <Layout title={product && product.title}>
+      <div className="container m-auto px-1">
         {!product ? (
           <div className=" w-full h-full flex justify-center items-center">
             <h1 className="m-auto text-3xl font-semibold">Product not found</h1>
@@ -132,8 +132,8 @@ const ProductPage = () => {
             </div>
           </div>
         )}
-      </Layout>
-    </div>
+      </div>
+    </Layout>
   );
 };
 
