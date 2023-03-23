@@ -14,7 +14,7 @@ const SearchBar = () => {
   console.log(filteredProducts);
 
   return (
-    <div className="bg-slate-100 rounded-lg flex flex-col divide-y max-h-[93vh]">
+    <div className="bg-slate-100 rounded-lg flex flex-col divide-y max-h-[89vh]">
       <div className="flex space-x-3 items-center p-4">
         <MagnifyingGlassIcon className="w-6 h-6 text-indigo-400" />
         <input
