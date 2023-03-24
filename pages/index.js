@@ -15,34 +15,30 @@ function Home() {
 
   const scrollRef = useRef(null);
 
-  const executeScroll = () => scrollRef.current.scrollIntoView();
+  const executeScroll = () => scrollRef.current.scrollIntoView({behavior: 'smooth'});
 
   return (
     <Layout title="Home page">
-      <div className="relative" data-aos="fade-up">
-        <div className="absolute w-full h-full bg-gradient-to-b from-slate-900/90 to-white/10 backdrop-blur-[3px] sm:backdrop-blur-sm" />
+      <div className="relative shadow-2xl shadow-gray-500 rounded-b-md" data-aos="fade-up" data-aos-duration="1000">
+        <div className="absolute w-full h-full bg-gradient-to-b from-slate-900/70 to-white/10 backdrop-blur-[2px] rounded-b-md" />
         <Image
           src={lgImage}
           width={700}
           height={350}
           alt="bg-shop"
-          className="h-[550px] md:h-[600px] lg:h-[750px] 2xl:h-[890px] w-full"
+          className="h-[550px] md:h-[600px] lg:h-[750px] 2xl:h-[890px] w-full rounded-b-md"
         />
         <div className="absolute inset-0 space-y-3 flex justify-center items-center">
-          <div className="w-4/5 h-3/4 space-y-9 text-center">
+          <div className="w-4/5 h-2/4 space-y-9 text-center">
             <h1 className=" text-white text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold">
               Bit Code Shop
             </h1>
-            <p className="text-white sm:text-base px-5 md:text-lg lg:text-2xl">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </p>
           </div>
           <button
-            className="absolute bottom-16 cursor-pointer"
+            className="absolute bottom-8 md:bottom-16 cursor-pointer"
             onClick={executeScroll}
           >
-            <ChevronDoubleDownIcon className=" w-12 lg:w-20 text-blue-800" />
+            <ChevronDoubleDownIcon className="w-12 lg:w-20 text-slate-800" />
           </button>
         </div>
       </div>
