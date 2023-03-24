@@ -11,8 +11,6 @@ const SearchBar = () => {
   const filteredProducts = productItems.filter((item) =>
     item.title.toLowerCase().includes(resultSearch.toLowerCase())
   );
-  console.log(resultSearch);
-  console.log(filteredProducts);
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -31,10 +29,7 @@ const SearchBar = () => {
         onClick={openModal}
       >
         <MagnifyingGlassIcon className="w-7 h-7 text-indigo-500" />
-        <input
-          className=" bg-transparent outline-none placeholder:text-slate-400"
-          placeholder="Quick search . . ."
-        />
+        <span className="text-slate-400">Quick search . . .</span>
       </div>
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog as="div" className="relative z-20" onClose={closeModal}>
@@ -67,7 +62,7 @@ const SearchBar = () => {
                     <input
                       type="text"
                       className=" bg-transparent placeholder:text-slate-400 outline-none"
-                      placeholder="Quick Search . . ."
+                      placeholder="Search . . ."
                       value={resultSearch}
                       onChange={(e) => setResultSearch(e.target.value)}
                     />
@@ -81,7 +76,7 @@ const SearchBar = () => {
                   >
                     {filteredProducts && resultSearch ? (
                       <div className=" p-2 grid gap-8">
-                        <h1 className="text-xl ml-4 mt-5 font-semibold text-start">
+                        <h1 className="text-xl mt-5 font-semibold text-start">
                           Products
                         </h1>
                         {filteredProducts.map((item) => (

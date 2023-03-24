@@ -8,9 +8,9 @@ const Layout = ({ children, title }) => {
       <Head>
         <title>{`${title} - Shopping`}</title>
       </Head>
-      <div className="flex min-h-screen flex-col justify-between ">
+      <div className="flex min-h-screen flex-col">
         <Header />
-        <main className="">{children}</main>
+        <main>{children}</main>
         <Footer />
       </div>
     </>

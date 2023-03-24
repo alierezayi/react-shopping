@@ -23,7 +23,7 @@ const Product = ({ itemData }) => {
   return (
     <div className="mb-5 block">
       <Link href={`products/${slug}`} className="relative hover:drop-shadow-lg">
-        <div className="bg-gradient-to-t from-black/50 absolute bottom-0 w-full h-4/6 rounded-b-lg"></div>
+        <div className="bg-gradient-to-t from-black/60 absolute bottom-0 w-full h-4/6 rounded-b-lg"></div>
 
         <Image
           src={image}
@@ -41,7 +41,7 @@ const Product = ({ itemData }) => {
       <div className="flex flex-col justify-center">
         <Link href={`products/${slug}`}>
           <h2
-            className="font-semibold text-sm md:text-base mt-2"
+            className="font-semibold mt-2"
             title="Show details"
           >
             {title}
