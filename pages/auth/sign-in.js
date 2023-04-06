@@ -1,7 +1,7 @@
 import { LockClosedIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { validate } from "../../components/validation/validate";
+import { validate } from "../../helper/validation/validate";
 import Layout from "../../components/layout/Layout";
 
 const SignInPage = () => {

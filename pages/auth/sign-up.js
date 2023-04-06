@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import Layout from "../../components/layout/Layout";
-import { validate } from "../../components/validation/validate";
+import { validate } from "../../helper/validation/validate";
 
 const SignUpPage = () => {
   const [data, setData] = useState({

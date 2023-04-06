@@ -69,6 +69,7 @@ const removeItemsHandler = (state, action) => {
   state.totalPrice = totalPrice;
 };
 
+
 const increaseHandler = (state, action) => {
   const indexI = state.cartItems.findIndex(
     (item) => item.slug === action.payload.slug

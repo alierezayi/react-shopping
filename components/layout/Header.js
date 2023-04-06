@@ -1,4 +1,7 @@
-import { ArrowLeftOnRectangleIcon, ShoppingBagIcon } from "@heroicons/react/24/outline";
+import {
+  ArrowLeftOnRectangleIcon,
+  ShoppingBagIcon,
+} from "@heroicons/react/24/outline";
 import Link from "next/link";
 import Image from "next/image";
 import shopImage from "../../public/images/shop-image.png";
@@ -7,10 +10,11 @@ import Sidebar from "../UI/Sidebar";
 import SearchBar from "../UI/SearchBar";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import Breadcrumbs from "../UI/BreadCrumbs";
 
 const Header = () => {
   const navItems = [
-    { label: "Product", href: "/product" },
+    { label: "Products", href: "/products" },
     { label: "Features", href: "/features" },
     { label: "Company", href: "/company" },
     { label: "Marketplace", href: "/marketplace" },
@@ -29,8 +33,8 @@ const Header = () => {
 
   return (
     <>
-      <header className="sticky top-0 z-10 w-full backdrop-blur-lg border-b bg-white/80 px-4 border-b-slate-100/80 sm:px-8 lg:px-16 ">
-        <nav className="flex h-16 lg:h-20 justify-between items-center border-b border-b-slate-100 lg:border-none">
+      <header className="sticky top-0 z-10 w-full backdrop-blur-lg border-b bg-white/80 px-4 border-b-slate-100 sm:px-8 lg:px-16">
+        <nav className="flex h-16 lg:h-20 justify-between items-center">
           <Bars3Icon
             className="w-7 h-7 text-gray-600 lg:hidden"
             onClick={() => setIsOpen(true)}
@@ -39,14 +43,20 @@ const Header = () => {
             href="/"
             className="flex space-x-1 sm:text-xl font-bold pl-8 md:pl-10 lg:pl-0"
           >
-            <Image src={shopImage} width={25} height={25} alt="main icon" className="sm:w-8 sm:h-8" />
+            <Image
+              src={shopImage}
+              width={25}
+              height={25}
+              alt="main icon"
+              className="sm:w-8 sm:h-8"
+            />
             <span>Bit Code</span>
           </Link>
           <ul className="hidden lg:flex items-center justify-center space-x-12">
             {navItems.map((item) => (
               <li
                 key={item.href}
-                className="font-semibold text-gray-900 hover:text-indigo-500 transition"
+                className="font-semibold text-gray-900 hover:text-blue-500 transition"
               >
                 <Link href={item.href}>{item.label}</Link>
               </li>
@@ -63,8 +73,9 @@ const Header = () => {
           </div>
         </nav>
       </header>
-      <div className="flex justify-center items-center space-x-3 py-3">
-        <SearchBar />
+      <div className="flex justify-between items-center py-3 px-4 sm:px-8 lg:px-16">
+        <Breadcrumbs />
+          <SearchBar component="header" />
       </div>
       <Sidebar items={navItems} isOpen={isOpen} setIsOpen={setIsOpen} />
     </>

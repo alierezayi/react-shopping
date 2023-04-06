@@ -5,7 +5,7 @@ import Link from "next/link";
 import React, { Fragment, useState } from "react";
 import productItems from "../../data/products.json";
 
-const SearchBar = () => {
+const SearchBar = ({ component, setSidebarOpen }) => {
   const [resultSearch, setResultSearch] = useState("");
 
   const filteredProducts = productItems.filter((item) =>
@@ -20,17 +20,31 @@ const SearchBar = () => {
 
   function openModal() {
     setIsOpen(true);
+    setSidebarOpen(false)
   }
 
   return (
     <>
-      <div
-        className="flex items-center justify-start space-x-2 rounded-lg bg-slate-50 p-2 shadow-sm shadow-slate-100 w-[90%] md:w-[700px]"
-        onClick={openModal}
-      >
-        <MagnifyingGlassIcon className="w-7 h-7 text-indigo-500" />
-        <span className="text-slate-400">Quick search . . .</span>
-      </div>
+      {component === "header" ? (
+        <div
+          className="hidden lg:flex py-2 px-4 w-[250px] space-x-2 rounded-full bg-slate-50 hover:bg-slate-100 cursor-pointer transition"
+          onClick={openModal}
+        >
+          <MagnifyingGlassIcon className="w-6 h-6 text-indigo-500" />
+          <span className="text-slate-400">Quick search . . .</span>
+        </div>
+      ) : (
+        component === "sidebar" && (
+          <div
+            className="flex py-2 px-4 space-x-2 rounded-full bg-slate-50 cursor-pointer"
+            onClick={openModal}
+          >
+            <MagnifyingGlassIcon className="w-6 h-6 text-indigo-500" />
+            <span className="text-slate-400">Quick search . . .</span>
+          </div>
+        )
+      )}
+
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog as="div" className="relative z-20" onClose={closeModal}>
           <Transition.Child

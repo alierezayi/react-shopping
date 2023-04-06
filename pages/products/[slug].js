@@ -44,6 +44,7 @@ const ProductPage = () => {
         break;
 
       default:
+        throw new Error();
         break;
     }
   };
