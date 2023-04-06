@@ -19,7 +19,7 @@ function Home() {
 
   return (
     <Layout title="Home page">
-      <div className="relative shadow-2xl shadow-gray-500 rounded-b-md" data-aos="fade-up" data-aos-duration="1000">
+      {/* <div className="relative shadow-2xl shadow-gray-500 rounded-b-md" data-aos="fade-up" data-aos-duration="1000">
         <div className="absolute w-full h-full bg-gradient-to-b from-slate-900/70 to-white/10 backdrop-blur-[2px] rounded-b-md" />
         <Image
           src={lgImage}
@@ -41,7 +41,7 @@ function Home() {
             <ChevronDoubleDownIcon className="w-12 lg:w-20 text-slate-800" />
           </button>
         </div>
-      </div>
+      </div> */}
       <ProductGrid scrollRef={scrollRef} />
     </Layout>
   );

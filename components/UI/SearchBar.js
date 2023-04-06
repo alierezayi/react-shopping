@@ -20,14 +20,14 @@ const SearchBar = ({ component, setSidebarOpen }) => {
 
   function openModal() {
     setIsOpen(true);
-    setSidebarOpen(false)
+    component === "sidebar" && setSidebarOpen(false);
   }
 
   return (
     <>
       {component === "header" ? (
         <div
-          className="hidden lg:flex py-2 px-4 w-[250px] space-x-2 rounded-full bg-slate-50 hover:bg-slate-100 cursor-pointer transition"
+          className="hidden lg:flex py-2 px-4 w-[220px] space-x-2 rounded-xl bg-slate-50 hover:bg-slate-100 cursor-pointer transition"
           onClick={openModal}
         >
           <MagnifyingGlassIcon className="w-6 h-6 text-indigo-500" />
@@ -36,7 +36,7 @@ const SearchBar = ({ component, setSidebarOpen }) => {
       ) : (
         component === "sidebar" && (
           <div
-            className="flex py-2 px-4 space-x-2 rounded-full bg-slate-50 cursor-pointer"
+            className="flex py-2 px-4 space-x-2 rounded-xl bg-slate-50 cursor-pointer"
             onClick={openModal}
           >
             <MagnifyingGlassIcon className="w-6 h-6 text-indigo-500" />
