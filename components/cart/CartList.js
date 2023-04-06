@@ -6,7 +6,7 @@ const CartList = () => {
   const { cartItems } = state;
 
   return (
-    <div className="overflow-auto xl:max-h-screen xl:col-span-7 sm:px-3 divide-y rounded-lg border sm:border-none">
+    <div className="overflow-y-scroll xl:max-h-screen xl:col-span-7 sm:px-3 divide-y rounded-lg border sm:border-none">
       {cartItems.map((item) => (
         <CartItem key={item.slug} itemData={item} />
       ))}

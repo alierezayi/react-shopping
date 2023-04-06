@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import { HomeIcon } from "@heroicons/react/24/outline";
 
 const Breadcrumbs = () => {
   const router = useRouter();
@@ -34,21 +35,20 @@ const Breadcrumbs = () => {
   if (!breadcrumbs) {
     return null;
   }
+  const home = breadcrumbs.find((breadcrumb) => breadcrumb.href === "/");
 
   return (
     <nav>
-      <ul className="flex">
-        <li className="p-1">
-          <Link href="/" className="text-gray-400 text-sm md:text-base hover:text-black hover:underline">
-            shop
-          </Link>
-        </li>
+      <ul className="flex items-center">
+        <Link href="/">
+          <HomeIcon className="w-5 h-5 text-gray-400 hover:text-black" />
+        </Link>
         {breadcrumbs.map((breadcrumb, index) => (
           <li key={index} className="p-1 space-x-1">
             <span className="text-gray-400">/</span>
             <Link
               href={breadcrumb.href}
-              className="text-gray-400 text-sm md:text-base hover:text-black hover:underline"
+              className="text-gray-400 text-base hover:text-black hover:underline"
             >
               {convertBreadcrumb(breadcrumb.breadcrumb)}
             </Link>

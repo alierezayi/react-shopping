@@ -27,7 +27,7 @@ const SearchBar = ({ component, setSidebarOpen }) => {
     <>
       {component === "header" ? (
         <div
-          className="hidden lg:flex py-2 px-4 w-[220px] space-x-2 rounded-xl bg-slate-50 hover:bg-slate-100 cursor-pointer transition"
+          className="hidden lg:flex py-2 px-4 w-[210px] space-x-2 rounded-xl bg-slate-50 hover:bg-slate-100 cursor-pointer transition"
           onClick={openModal}
         >
           <MagnifyingGlassIcon className="w-6 h-6 text-indigo-500" />
@@ -44,7 +44,7 @@ const SearchBar = ({ component, setSidebarOpen }) => {
           </div>
         )
       )}
-
+      
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog as="div" className="relative z-20" onClose={closeModal}>
           <Transition.Child
@@ -70,7 +70,7 @@ const SearchBar = ({ component, setSidebarOpen }) => {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="bg-slate-100 rounded-lg flex flex-col divide-y max-h-[89vh] w-[95%] md:w-[700px]">
+                <Dialog.Panel className="bg-white rounded-lg flex flex-col divide-y max-h-[89vh] w-[95%] md:w-[700px]">
                   <div className="flex space-x-3 items-center p-4">
                     <MagnifyingGlassIcon className="w-6 h-6 text-indigo-400" />
                     <input

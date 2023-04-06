@@ -1,7 +1,5 @@
-import Image from "next/image";
 import Layout from "../components/layout/Layout";
 import ProductGrid from "../components/products/ProductGrid";
-import lgImage from "../public/images/banner/jezael-melgoza-1.jpg";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import { useEffect, useRef } from "react";
