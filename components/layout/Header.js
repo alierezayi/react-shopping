@@ -11,13 +11,14 @@ import SearchBar from "../UI/SearchBar";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import Breadcrumbs from "../UI/BreadCrumbs";
+import NavLinks from "../NavLinks";
 
 const Header = () => {
   const navItems = [
+    { label: "Home", href: "/" },
     { label: "Products", href: "/products" },
     { label: "Features", href: "/features" },
-    { label: "Company", href: "/company" },
-    { label: "Marketplace", href: "/marketplace" },
+    { label: "About Us", href: "/about-us" },
   ];
 
   const [cartCount, setCartCount] = useState(0);
@@ -39,6 +40,7 @@ const Header = () => {
             className="w-7 h-7 text-gray-600 lg:hidden"
             onClick={() => setIsOpen(true)}
           />
+
           <Link
             href="/"
             className="flex space-x-1 sm:text-xl font-bold pl-8 md:pl-10 lg:pl-0"
@@ -52,17 +54,10 @@ const Header = () => {
             />
             <span>Bit Code</span>
           </Link>
-          <ul className="hidden lg:flex items-center justify-center space-x-12">
-            {navItems.map((item) => (
-              <li
-                key={item.href}
-                className="font-semibold text-gray-900 hover:text-blue-500 transition"
-              >
-                <Link href={item.href}>{item.label}</Link>
-              </li>
-            ))}
-          </ul>
-          <div className="flex sm:space-x-4">
+
+          <NavLinks navItems={navItems} />
+
+          <div className="flex sm:space-x-2">
             <Link href="/cart" className="flex p-2 space-x-1 ">
               <ShoppingBagIcon className="h-5 w-5 sm:w-6 sm:h-6 text-gray-400 hover:text-gray-600 transition" />
               <span className="text-sm sm:text-base">{cartCount}</span>
@@ -75,7 +70,7 @@ const Header = () => {
       </header>
       <div className="flex justify-between items-center py-3 px-4 sm:px-8 lg:px-16">
         <Breadcrumbs />
-          <SearchBar component="header" />
+        <SearchBar component="header" />
       </div>
       <Sidebar items={navItems} isOpen={isOpen} setIsOpen={setIsOpen} />
     </>

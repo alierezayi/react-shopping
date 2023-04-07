@@ -32,7 +32,7 @@ const SignUpPage = () => {
   };
 
   const toggleClass = (errorValue, touchValue) => {
-    return errorValue && touchValue ? "ring-rose-400" : "ring-blue-400";
+    return errorValue && touchValue ? "ring-rose-500/90" : "ring-blue-500/90";
   };
 
   const submitHandler = (event) => {

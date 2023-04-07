@@ -12,7 +12,7 @@ const OrderSummary = () => {
   const router = useRouter();
   const checkoutHandler = () => {
     dispatch(checkout());
-    router.push("sign-in?redirect=/shipping");
+    router.push("/auth/sign-in");
   };
 
   const shippingEstimate = 0;
@@ -42,9 +42,7 @@ const OrderSummary = () => {
           </div>
           <div className="flex justify-between py-3">
             <span className="text-lg font-medium">Order total</span>
-            <span className="text-lg font-medium">
-              ${orderTotal.toFixed(2)}
-            </span>
+            <span className="text-lg font-medium">${orderTotal}</span>
           </div>
         </div>
         <button

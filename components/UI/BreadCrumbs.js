@@ -40,15 +40,17 @@ const Breadcrumbs = () => {
   return (
     <nav>
       <ul className="flex items-center">
-        <Link href="/">
-          <HomeIcon className="w-5 h-5 text-gray-400 hover:text-black" />
-        </Link>
+        <li className="mr-1 md:mr-2">
+          <Link href="/">
+            <HomeIcon className="w-4 h-4 text-gray-400 hover:text-black" />
+          </Link>
+        </li>
         {breadcrumbs.map((breadcrumb, index) => (
-          <li key={index} className="p-1 space-x-1">
+          <li key={index} className="p-1 space-x-2 md:space-x-3">
             <span className="text-gray-400">/</span>
             <Link
               href={breadcrumb.href}
-              className="text-gray-400 text-base hover:text-black hover:underline"
+              className="text-gray-400 text-sm hover:text-black hover:underline"
             >
               {convertBreadcrumb(breadcrumb.breadcrumb)}
             </Link>
