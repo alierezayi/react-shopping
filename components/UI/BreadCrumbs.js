@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import { HomeIcon } from "@heroicons/react/24/outline";
+import { RoofHome } from "react-huge-icons/outline";
 
 const Breadcrumbs = () => {
   const router = useRouter();
@@ -42,7 +42,7 @@ const Breadcrumbs = () => {
       <ul className="flex items-center">
         <li className="mr-1 md:mr-2">
           <Link href="/">
-            <HomeIcon className="w-4 h-4 text-gray-400 hover:text-black" />
+            <RoofHome className="w-5 h-5 text-gray-400 hover:text-black" />
           </Link>
         </li>
         {breadcrumbs.map((breadcrumb, index) => (

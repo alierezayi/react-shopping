@@ -27,11 +27,10 @@ const SearchBar = ({ component, setSidebarOpen }) => {
     <>
       {component === "header" ? (
         <button
-          className="hidden lg:flex py-2 px-7 space-x-1 rounded-full bg-slate-50 hover:bg-slate-100 cursor-pointer transition"
+          className="hidden lg:flex p-2 space-x-1 rounded-full bg-slate-50 hover:bg-slate-100 cursor-pointer transition"
           onClick={openModal}
         >
-          <MagnifyingGlassIcon className="w-6 h-6 -ml-1 text-indigo-500" />
-          <span className="text-slate-500">Quick Search</span>
+          <MagnifyingGlassIcon className="w-6 h-6 text-indigo-500" />
         </button>
       ) : (
         component === "sidebar" && (

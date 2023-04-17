@@ -1,8 +1,10 @@
 import { LockClosedIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { validate } from "../../helper/validation/validate";
-import Layout from "../../components/layout/Layout";
+import { validate } from "../helper/validation/validate";
+import Layout from "../components/layout/Layout";
+import { signIn, useSession } from "next-auth/react";
+import { useRouter } from "next/router";
 
 const SignInPage = () => {
   const [data, setData] = useState({
@@ -12,6 +14,17 @@ const SignInPage = () => {
 
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
+
+  const { data: session } = useSession();
+
+  const router = useRouter();
+  const { redirect } = router.query;
+
+  useEffect(() => {
+    if (session?.user) {
+      router.push(redirect || "/");
+    }
+  }, [router, session, redirect]);
 
   useEffect(() => {
     setErrors(validate(data, "sign-in"));
@@ -32,9 +45,21 @@ const SignInPage = () => {
     return errorValue && touchValue ? "ring-rose-500/90" : "ring-blue-500/90";
   };
 
-  const submitHandler = (event) => {
+  const submitHandler = async (event) => {
+    event.preventDefault()
     if (!Object.keys(errors).length) {
-      alert("You signed in successfully", "success");
+      try {
+        const result = await signIn("credentials", {
+          redirect: false,
+          emailAdress: data.emailAdress,
+          password: data.password,
+        });
+        if (result.error) {
+          console.log(result.error);
+        }
+      } catch (error) {
+        console.log(error);
+      }
     } else {
       event.preventDefault();
       setTouched({

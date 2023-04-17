@@ -16,7 +16,13 @@ const CartPage = () => {
         <h1 className="mb-10 text-3xl font-medium">Shoppoing Cart</h1>
         {!cartItems.length ? (
           <div className=" flex items-center justify-center flex-col">
-            <Image src={emptyCart} width={400} height={300} alt="empty cart" className="" />
+            <Image
+              src={emptyCart}
+              width={400}
+              height={300}
+              alt="empty cart"
+              className=""
+            />
             <h1 className="text-lg text-gray-700">Cart is empty.</h1>
           </div>
         ) : (

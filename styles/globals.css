@@ -11,10 +11,3 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Foundation&family=IBM+Plex+Sans:wght@300&family=Lato:ital,wght@1,300&display=swap");
-
-body {
-  font-family: "Edu NSW ACT Foundation", cursive;
-  font-family: "IBM Plex Sans", sans-serif;
-  font-family: "Lato", sans-serif;
-}
