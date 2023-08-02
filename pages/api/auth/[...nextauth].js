@@ -12,13 +12,17 @@ export default NextAuth({
   callbacks: {
     async jwt({ token, user }) {
       if (user?._id) token._id = user._id;
+
       if (user?.isAdmin) token.isAdmin = user.isAdmin;
+
       return token;
     },
 
     async session({ session, token }) {
       if (token?._id) session.user._id = token._id;
+
       if (token?.isAdmin) session.user.isAdmin = token.isAdmin;
+
       return session;
     },
   },
@@ -27,21 +31,24 @@ export default NextAuth({
     CredentialsProvider({
       async authorize(credentials) {
         await db.connect();
+
         const user = await User.findOne({
-          emailAdress: credentials.emailAdress,
+          email: credentials.email,
         });
+
+        // &&
+
         if (user && bcrypt.compareSync(credentials.password, user.password)) {
           return {
             _id: user._id,
-            firstName: user.firstName,
-            lastName: user.lastName,
-            phoneNumber: user.phoneNumber,
-            emailAdress: user.emailAdress,
-            image: "",
+            name: user.name,
+            email: user.email,
+            image: "f",
             isAdmin: user.isAdmin,
           };
+        } else {
+          throw new Error("Invalid email or password");
         }
-        throw new Error("Invalid email or password");
       },
     }),
   ],

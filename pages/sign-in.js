@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 
 const SignInPage = () => {
   const [data, setData] = useState({
-    emailAdress: "",
+    email: "",
     password: "",
   });
 
@@ -46,12 +46,12 @@ const SignInPage = () => {
   };
 
   const submitHandler = async (event) => {
-    event.preventDefault()
+    event.preventDefault();
     if (!Object.keys(errors).length) {
       try {
         const result = await signIn("credentials", {
           redirect: false,
-          emailAdress: data.emailAdress,
+          email: data.email,
           password: data.password,
         });
         if (result.error) {
@@ -63,7 +63,7 @@ const SignInPage = () => {
     } else {
       event.preventDefault();
       setTouched({
-        emailAdress: true,
+        email: true,
         password: true,
       });
     }
@@ -96,20 +96,18 @@ const SignInPage = () => {
                 </label>
                 <input
                   id="email-adress"
-                  name="emailAdress"
+                  name="email"
                   type="email"
-                  value={data.emailAdress}
+                  value={data.email}
                   onChange={changeHandler}
                   onFocus={focusHandler}
                   className={`border border-slate-300 py-1.5 px-2 w-full rounded-md outline-none focus:ring ${toggleClass(
-                    errors.emailAdress,
-                    touched.emailAdress
+                    errors.email,
+                    touched.email
                   )}`}
                 />
-                {errors.emailAdress && touched.emailAdress && (
-                  <span className="text-xs text-rose-500">
-                    {errors.emailAdress}
-                  </span>
+                {errors.email && touched.email && (
+                  <span className="text-xs text-rose-500">{errors.email}</span>
                 )}
               </div>
               <div className="col-span-2 space-y-1">

@@ -4,12 +4,12 @@ const validPassword = new RegExp("^(?=.*?[A-Za-z])(?=.*?[0-9]).{6,}$");
 export const validate = (data, type) => {
   const errors = {};
 
-  if (!data.emailAdress) {
-    errors.emailAdress = "Enter your email";
-  } else if (!validEmail.test(data.emailAdress)) {
-    errors.emailAdress = "Email Adress is invalid";
+  if (!data.email) {
+    errors.email = "Enter your email";
+  } else if (!validEmail.test(data.email)) {
+    errors.email = "Email Adress is invalid";
   } else {
-    delete errors.emailAdress;
+    delete errors.email;
   }
 
   if (!data.password) {

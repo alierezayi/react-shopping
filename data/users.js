@@ -1,18 +1,19 @@
+import bcrypt from "bcryptjs";
 
 const users = [
   {
-    firstName: "Ali",
+    name: "Ali",
     lastName: "Rezaei",
     phoneNumber: "09916937150",
-    emailAdress: "im1.bitcode@gmail.com",
-    password: bcrypt.hashSync("ali13823"),
+    email: "im1.bitcode@gmail.com",
+    password: bcrypt.hashSync("ali138282"),
     isAdmin: true,
   },
   {
-    firstName: "Shiva",
+    name: "Shiva",
     lastName: "Babayi",
     phoneNumber: "09029151047",
-    emailAdress: "im1.bitcode@gmail.com",
+    email: "ali1382alh@gmail.com",
     password: bcrypt.hashSync("shiva13825"),
     isAdmin: false,
   },

@@ -2,8 +2,6 @@ import { ArrowLeftOnRectangleIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import Image from "next/image";
 import shopImage from "../../public/images/shop-image.png";
-import { AppsDoubleCircle } from "react-huge-icons/bulk";
-import { ShoppingBag, User } from "react-huge-icons/outline";
 
 import Sidebar from "../UI/Sidebar";
 import SearchBar from "../UI/SearchBar";
@@ -40,10 +38,10 @@ const Header = () => {
       <header className="sticky top-0 z-10 w-full backdrop-blur-lg border-b bg-white/80 px-4 border-b-slate-100 sm:px-8 lg:px-16">
         <nav className="flex h-16 lg:h-20 justify-between items-center">
           <div className="w-16 sm:w-20 lg:hidden">
-            <AppsDoubleCircle
+            {/* <AppsDoubleCircle
               className="w-8 h-8 text-indigo-500"
               onClick={() => setIsOpen(true)}
-            />
+            /> */}
           </div>
 
           <Link href="/" className="flex space-x-1 sm:text-xl font-bold">
@@ -61,14 +59,14 @@ const Header = () => {
 
           <div className="flex sm:space-x-2">
             <Link href="/cart" className="flex p-2 space-x-1 ">
-              <ShoppingBag className="h-5 w-5 sm:w-6 sm:h-6 text-gray-400 hover:text-gray-600 transition" />
+              {/* <ShoppingBag className="h-5 w-5 sm:w-6 sm:h-6 text-gray-400 hover:text-gray-600 transition" /> */}
               <span className="text-sm sm:text-base">{cartCount}</span>
             </Link>
-            {state === "loading" ? (
+            {status === "loading" ? (
               "Loading..."
             ) : session?.user ? (
               <button>
-                <User className="w-5 h-5" />
+                {/* <User className="w-5 h-5" /> */}
               </button>
             ) : (
               <Link href="/sign-in" className="p-2">
