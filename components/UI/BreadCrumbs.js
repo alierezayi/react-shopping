@@ -41,7 +41,7 @@ const Breadcrumbs = () => {
     <nav>
       <ul className="flex items-center">
         <li className="mr-1 md:mr-2">
-          <Link href="/">
+          <Link href="/" legacyBehavior>
             <HomeIcon className="w-5 h-5 text-gray-400 hover:text-black" />
           </Link>
         </li>
@@ -51,7 +51,7 @@ const Breadcrumbs = () => {
             <Link
               href={breadcrumb.href}
               className="text-gray-400 text-sm hover:text-black hover:underline"
-            >
+              legacyBehavior>
               {convertBreadcrumb(breadcrumb.breadcrumb)}
             </Link>
           </li>

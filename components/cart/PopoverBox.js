@@ -56,7 +56,7 @@ const PopoverBox = () => {
                         key={item.slug}
                         href={`/products/${item.slug}`}
                         className="-m-3 flex items-center rounded-lg p-2 transition duration-150 ease-in-out hover:bg-gray-50"
-                      >
+                        legacyBehavior>
                         <div className="flex h-12 w-12 shrink-0 items-center justify-center text-white sm:h-14 sm:w-14">
                           <Image
                             src={item.image}
@@ -87,7 +87,7 @@ const PopoverBox = () => {
                       <Link
                         href="/cart"
                         className="flex justify-center space-x-1 w-full text-center py-1 text-slate-400 text-base hover:text-indigo-500 transition duration-200"
-                      >
+                        legacyBehavior>
                         <span>View Shopping Cart</span>
                         <ChevronRightIcon className="w-6 h-6" />
                       </Link>

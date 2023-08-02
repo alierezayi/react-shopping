@@ -8,7 +8,7 @@ const NavLinks = ({ navItems }) => {
           key={item.href}
           className="hover:text-indigo-500 transition"
         >
-          <Link href={item.href} className=" active:text-indigo-500">
+          <Link href={item.href} className=" active:text-indigo-500" legacyBehavior>
             {item.label}
           </Link>
         </li>

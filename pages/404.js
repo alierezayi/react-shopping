@@ -20,7 +20,7 @@ const NotFoundPage = () => {
             >
               Go back home
             </Link>
-            <Link href="" className="text-sm font-semibold text-gray-900">
+            <Link href="" className="text-sm font-semibold text-gray-900" legacyBehavior>
               Contact support <span>&rarr;</span>
             </Link>
           </div>

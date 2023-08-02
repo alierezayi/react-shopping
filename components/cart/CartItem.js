@@ -16,7 +16,7 @@ const CartItem = ({ itemData }) => {
   return (
     <div className="flex flex-col sm:flex-row space-y-10 sm:space-y-0 items-center justify-between p-5">
       <div className="flex space-x-7">
-        <Link href={`/products/${slug}`}>
+        <Link href={`/products/${slug}`} legacyBehavior>
           <Image
             src={image}
             width={200}

@@ -22,7 +22,10 @@ const Product = ({ itemData }) => {
 
   return (
     <div className="mb-5 block">
-      <Link href={`products/${slug}`} className="relative hover:drop-shadow-lg">
+      <Link
+        href={`products/${slug}`}
+        className="relative hover:drop-shadow-lg"
+        legacyBehavior>
         <div className="bg-gradient-to-t from-black/60 absolute bottom-0 w-full h-4/6 rounded-b-lg"></div>
 
         <Image
@@ -39,7 +42,7 @@ const Product = ({ itemData }) => {
         </span>
       </Link>
       <div className="flex flex-col justify-center">
-        <Link href={`products/${slug}`}>
+        <Link href={`products/${slug}`} legacyBehavior>
           <h2
             className="font-semibold mt-2"
             title="Show details"
