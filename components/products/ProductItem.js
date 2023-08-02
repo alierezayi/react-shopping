@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addItem, removeItem } from "../../redux/features/cart/cartSlice";
 import { CheckIcon, TrashIcon } from "@heroicons/react/24/outline";
 
-const Product = ({ itemData }) => {
+const ProductItem = ({ itemData }) => {
   const { title, image, price, slug } = itemData;
 
   const dispatch = useDispatch();
@@ -70,4 +70,4 @@ const Product = ({ itemData }) => {
   );
 };
 
-export default Product;
+export default ProductItem;
