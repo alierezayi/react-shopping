@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem, removeItem } from "../../redux/features/cart/cartSlice";

@@ -1,6 +1,6 @@
 import { ArrowLeftOnRectangleIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import shopImage from "../../public/images/shop-image.png";
 
 import Sidebar from "../UI/Sidebar";

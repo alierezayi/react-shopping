@@ -3,7 +3,7 @@ import CartList from "../components/cart/CartList";
 import OrderSummary from "../components/cart/OrderSummary";
 import Layout from "../components/layout/Layout";
 import dynamic from "next/dynamic";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import emptyCart from "../public/images/empty-cart-2969398.png";
 
 const CartPage = () => {

@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import Layout from "../../components/layout/Layout";

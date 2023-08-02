@@ -1,6 +1,6 @@
 import { Popover, Transition } from "@headlessui/react";
 import { ShoppingBagIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import Link from "next/link";
 import { Fragment, useEffect, useState } from "react";
 import { useSelector } from "react-redux";

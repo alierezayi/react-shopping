@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "next/legacy/image";
 import Link from "next/link";
 import { PlusIcon, MinusIcon } from "@heroicons/react/24/outline";
 import { useDispatch } from "react-redux";
