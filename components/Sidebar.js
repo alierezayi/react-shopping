@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import BackDrop from "./BackDrop";
-import SearchBar from "../UI/SearchBar";
+import SearchBar from "./SearchBar";
 
 const Sidebar = ({ items, isOpen, setIsOpen }) => {
   return <>

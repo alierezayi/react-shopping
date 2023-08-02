@@ -2,14 +2,17 @@ import { ArrowLeftOnRectangleIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import Image from "next/legacy/image";
 import shopImage from "../../public/images/shop-image.png";
+import { ShoppingBagIcon } from "@heroicons/react/24/outline";
 
-import Sidebar from "../UI/Sidebar";
-import SearchBar from "../UI/SearchBar";
+import Sidebar from "../Sidebar";
+import SearchBar from "../SearchBar";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import Breadcrumbs from "../UI/BreadCrumbs";
+import Breadcrumbs from "../BreadCrumbs";
 import NavLinks from "../NavLinks";
 import { useSession } from "next-auth/react";
+import { RiApps2Line } from "react-icons/ri";
+import ProfileMenu from "../ProfileMenu";
 
 const Header = () => {
   // Authentication
@@ -33,54 +36,59 @@ const Header = () => {
 
   const [isOpen, setIsOpen] = useState(false);
 
-  return <>
-    <header className="sticky top-0 z-10 w-full backdrop-blur-lg border-b bg-white/80 px-4 border-b-slate-100 sm:px-8 lg:px-16">
-      <nav className="flex h-16 lg:h-20 justify-between items-center">
-        <div className="w-16 sm:w-20 lg:hidden">
-          {/* <AppsDoubleCircle
-            className="w-8 h-8 text-indigo-500"
-            onClick={() => setIsOpen(true)}
-          /> */}
-        </div>
+  function classNames(...classes) {
+    return classes.filter(Boolean).join(" ");
+  }
 
-        <Link href="/" className="flex space-x-1 sm:text-xl font-bold" legacyBehavior>
-          <Image
-            src={shopImage}
-            width={25}
-            height={25}
-            alt="main icon"
-            className="sm:w-8 sm:h-8"
-          />
-          <span>Bit Code</span>
-        </Link>
+  return (
+    <>
+      <header className="sticky top-0 z-10 w-full backdrop-blur-lg border-b bg-white/80 px-4 border-b-slate-100 sm:px-8 lg:px-16">
+        <nav className="flex h-16 lg:h-20 justify-between items-center">
+          <div className="w-16 sm:w-20 lg:hidden">
+            <RiApps2Line
+              className="w-6 h-6 text-indigo-500"
+              onClick={() => setIsOpen(true)}
+            />
+          </div>
 
-        <NavLinks navItems={navItems} />
-
-        <div className="flex sm:space-x-2">
-          <Link href="/cart" className="flex p-2 space-x-1 " legacyBehavior>
-            {/* <ShoppingBag className="h-5 w-5 sm:w-6 sm:h-6 text-gray-400 hover:text-gray-600 transition" /> */}
-            <span className="text-sm sm:text-base">{cartCount}</span>
+          <Link href="/" legacyBehavior>
+            <div className="flex space-x-1 sm:text-xl font-bold">
+              <Image
+                src={shopImage}
+                width={25}
+                height={25}
+                alt="main icon"
+                className="sm:w-8 sm:h-8"
+              />
+              <span>Bit Code</span>
+            </div>
           </Link>
-          {status === "loading" ? (
-            "Loading..."
-          ) : session?.user ? (
-            <button>
-              {/* <User className="w-5 h-5" /> */}
-            </button>
-          ) : (
-            <Link href="/sign-in" className="p-2" legacyBehavior>
-              <ArrowLeftOnRectangleIcon className="w-5 h-5 sm:w-6 sm:h-6 text-gray-400 hover:text-gray-600 transition" />
+
+          <NavLinks navItems={navItems} />
+
+          <div className="flex items-center sm:space-x-6">
+            <Link href="/cart" className="">
+              <div className="flex items-center space-x-1 mb-1">
+                <ShoppingBagIcon className="h-5 w-5 sm:w-6 sm:h-6 text-gray-400 hover:text-gray-600 transition" />
+                <span className="text-sm">{cartCount}</span>
+              </div>
             </Link>
-          )}
-        </div>
-      </nav>
-    </header>
-    <div className="flex justify-between items-center py-3 px-5 sm:px-10 lg:px-16">
-      <Breadcrumbs />
-      <SearchBar component="header" />
-    </div>
-    <Sidebar items={navItems} isOpen={isOpen} setIsOpen={setIsOpen} />
-  </>;
+            {status === "loading" ? (
+              "Loading..."
+            ) : session?.user ? (
+              <ProfileMenu />
+            ) : (
+              <Link href="/sign-in" className="">
+                <ArrowLeftOnRectangleIcon className="w-5 h-5 sm:w-6 sm:h-6 text-gray-400 hover:text-gray-600 transition" />
+              </Link>
+            )}
+          </div>
+        </nav>
+      </header>
+
+      <Sidebar items={navItems} isOpen={isOpen} setIsOpen={setIsOpen} />
+    </>
+  );
 };
 
 export default Header;

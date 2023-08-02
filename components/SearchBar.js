@@ -3,7 +3,7 @@ import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import Image from "next/legacy/image";
 import Link from "next/link";
 import React, { Fragment, useState } from "react";
-import productItems from "../../data/products.json";
+import productItems from "../data/products.json";
 
 const SearchBar = ({ component, setSidebarOpen }) => {
   const [resultSearch, setResultSearch] = useState("");

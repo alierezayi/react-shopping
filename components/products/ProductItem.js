@@ -21,32 +21,27 @@ const Product = ({ itemData }) => {
   );
 
   return (
-    <div className="mb-5 block">
-      <Link
-        href={`products/${slug}`}
-        className="relative hover:drop-shadow-lg"
-        legacyBehavior>
-        <div className="bg-gradient-to-t from-black/60 absolute bottom-0 w-full h-4/6 rounded-b-lg"></div>
+    <div className="block">
+      <Link href={`products/${slug}`} className="">
+        <div className="relative  hover:drop-shadow-lg border cursor-pointer border-gray-200 rounded-xl">
+          <Image
+            src={image}
+            className="rounded-xl"
+            width={500}
+            height={500}
+            alt="product"
+            title="Show details"
+          />
+          <div className="bg-gradient-to-t from-black/70 absolute bottom-0 w-full h-4/6 rounded-b-lg"></div>
 
-        <Image
-          src={image}
-          className="rounded-xl"
-          width={500}
-          height={500}
-          alt="product"
-          title="Show details"
-        />
-
-        <span className="absolute bottom-3 right-4 sm:text-lg text-white">
-          ${price}
-        </span>
+          <span className="absolute bottom-3 right-4 sm:text-xl text-white">
+            ${price}
+          </span>
+        </div>
       </Link>
       <div className="flex flex-col justify-center">
         <Link href={`products/${slug}`} legacyBehavior>
-          <h2
-            className="font-semibold mt-2"
-            title="Show details"
-          >
+          <h2 className="font-semibold mt-2" title="Show details">
             {title}
           </h2>
         </Link>

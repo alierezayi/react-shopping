@@ -73,6 +73,9 @@ const SignInPage = () => {
     <Layout title="Sign in">
       <div className="flex min-h-full items-center justify-center py-10 px-10 sm:px-6 lg:px-8">
         <div className="w-full max-w-md space-y-8">
+          <div className="mx-auto w-20 h-20 rounded-full flex justify-center items-center bg-green-500">
+            <LockClosedIcon className="w-10 h-10 text-white" />
+          </div>
           <div className="space-y-3">
             <h2 className="mt-2 text-center text-3xl font-bold tracking-tight text-gray-900">
               Sign in to your Account
