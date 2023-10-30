@@ -2,7 +2,7 @@ import Image from "next/legacy/image";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import Layout from "../../components/layout/Layout";
-import productItems from "../../data/products.json";
+import products from "../../data/products";
 import {
   addItem,
   decrease,
@@ -14,7 +14,7 @@ import { PlusIcon, MinusIcon } from "@heroicons/react/24/outline";
 const ProductPage = () => {
   const { query } = useRouter();
   const { slug } = query;
-  const product = productItems.find((item) => item.slug === slug);
+  const product = products.find((item) => item.slug === slug);
 
   const state = useSelector((state) => state.cart);
   const dispatch = useDispatch();

@@ -56,9 +56,12 @@ const OrderSummary = () => {
           <Link
             href={`/`}
             className="flex items-center space-x-1 text-indigo-500 hover:text-indigo-700"
-            legacyBehavior>
-            <span>Continue Shopping</span>{" "}
-            <ArrowSmallRightIcon className="w-5 h-5" />
+            legacyBehavior
+          >
+            <>
+              <span>Continue Shopping</span>{" "}
+              <ArrowSmallRightIcon className="w-5 h-5" />
+            </>
           </Link>
         </div>
       </div>
